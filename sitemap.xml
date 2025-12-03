@@ -3,14 +3,9 @@
 
   <url>
     <loc>https://syntaai.com/</loc>
-    <priority>1.0</priority>
+    <lastmod>2025-12-03</lastmod>
+    <priority>1.00</priority>
     <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://syntaai.com/#contact</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
