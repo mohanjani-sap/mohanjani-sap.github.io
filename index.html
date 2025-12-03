@@ -273,20 +273,23 @@
         <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
           <h2>Request a demo</h2>
           <p style="color:var(--muted)">Tell us about your environment and we'll prepare a tailored walkthrough.</p>
-          <form id="contactForm" style="margin-top:12px;display:grid;gap:10px">
+          <form id="contactForm" action="https://formsubmit.co/contact@syntaai.com" method="POST" style="margin-top:12px;display:grid;gap:10px">
+            <input type="hidden" name="_subject" value="New Demo Request from SyntaAI Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
             <div style="display:flex;gap:10px">
-              <input name="firstName" placeholder="First name" required style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-              <input name="lastName" placeholder="Last name" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+              <input name="firstName" placeholder="First name" required style="flex:1;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
+              <input name="lastName" placeholder="Last name" style="flex:1;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
             </div>
-            <input name="email" type="email" placeholder="Email" required style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-            <input name="company" placeholder="Company" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-            <select name="requestType" required style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+            <input name="email" type="email" placeholder="Email" required style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
+            <input name="company" placeholder="Company" style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
+            <select name="requestType" required style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
               <option value="">Select request</option>
               <option value="demo">Request demo</option>
               <option value="support">Support</option>
               <option value="info">More info</option>
             </select>
-            <textarea name="message" placeholder="Tell us about your SAP landscape..." rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+            <textarea name="message" placeholder="Tell us about your SAP landscape..." rows="4" style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem;resize:vertical"></textarea>
             <div style="display:flex;gap:12px">
               <button type="submit" class="btn primary">Send request</button>
               <button type="button" class="btn ghost" onclick="alert('Email: contact@syntaai.com')">Contact</button>
@@ -310,13 +313,7 @@
   </div>
 
   <script>
-    // simple form demo behaviour (does not submit anywhere unless user connects)
-    document.getElementById('contactForm')?.addEventListener('submit', function(e){
-      e.preventDefault();
-      const msg = document.getElementById('msg');
-      msg.textContent = 'Request received — we will email you to schedule a demo.';
-      setTimeout(()=> msg.textContent='',5000);
-    });
+    // Form is now handled by FormSubmit - emails will be sent automatically
   </script>
 </body>
 </html>
