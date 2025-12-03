@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact – SyntaAI</title>
+
+  <!-- Canonical for SEO -->
+  <link rel="canonical" href="https://syntaai.com/contact" />
+
+  <!-- Meta description -->
+  <meta name="description" content="Contact SyntaAI to request a demo, ask questions, or get support for SAP Security, SOD, GRC, and AI-powered automation." />
+
+  <!-- Social preview (Open Graph) -->
+  <meta property="og:title" content="Contact – SyntaAI" />
+  <meta property="og:description" content="Request a demo or get in touch with SyntaAI. AI-powered SAP security and compliance automation." />
+  <meta property="og:url" content="https://syntaai.com/contact" />
+
+  <style>
+    body{
+      background:linear-gradient(180deg,#f8f9fc,#eef1f7);
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      color:#0f1724;
+    }
+
+    .wrap{
+      max-width:900px;
+      margin:40px auto;
+      padding:20px;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.7);
+      padding:15px 20px;
+      border-radius:12px;
+      backdrop-filter:blur(6px);
+      box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo-bubble{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:grid;place-items:center;font-weight:700;color:white}
+    nav a{margin-left:16px;text-decoration:none;font-weight:600;color:#475163}
+    nav a.cta{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;padding:10px 14px;border-radius:12px;box-shadow:0 8px 30px rgba(124,58,237,0.18)}
+
+    h1{margin-top:30px;font-size:2rem;color:#09203f}
+    p{color:#475163;font-size:1.05rem}
+
+    form{
+      margin-top:20px;
+      background:#ffffff;
+      padding:25px;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(16,24,40,0.04);
+      border:1px solid rgba(0,0,0,0.08);
+      display:grid;
+      gap:14px;
+    }
+
+    input, textarea, select{
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.1);
+      background:transparent;
+      font-size:1rem;
+      width:100%;
+    }
+
+    button{
+      padding:12px 18px;
+      border-radius:10px;
+      border:none;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .primary{
+      background:linear-gradient(90deg,#7c3aed,#06b6d4);
+      color:white;
+    }
+
+    .ghost{
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.2);
+      color:#475163;
+    }
+
+    footer{
+      margin-top:40px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:22px;
+      border:1px solid rgba(13,60,80,0.04);
+      text-align:center;
+      color:#475163;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .msg{margin-top:10px;color:#7c3aed;font-weight:700}
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">
+      <div class="logo-bubble">SA</div>
+      <h2>SyntaAI</h2>
+    </a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#features">Features</a>
+      <a href="/#use-cases">Use Cases</a>
+      <a href="/#contact" class="cta">Request Demo</a>
+    </nav>
+  </header>
+
+  <h1>Contact SyntaAI</h1>
+  <p>Have questions? Want a demo? Fill out the form below and we’ll reach out shortly.</p>
+
+  <form id="contactForm">
+    <input name="name" placeholder="Your Name" required />
+    <input name="email" type="email" placeholder="Email" required />
+    <input name="company" placeholder="Company (optional)" />
+    <textarea name="message" rows="5" placeholder="Tell us about your SAP landscape..."></textarea>
+    <div style="display:flex;gap:12px">
+      <button class="primary" type="submit">Send Message</button>
+      <button type="button" class="ghost" onclick="window.location='mailto:contact@syntaai.com'">Email Us</button>
+    </div>
+    <div id="msg" class="msg"></div>
+  </form>
+
+  <footer>
+    © 2024 SyntaAI — SAP Security • Compliance • Audit
+  </footer>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('msg').textContent = "Thank you! We will reply soon.";
+  setTimeout(()=>document.getElementById('msg').textContent='',5000);
+});
+</script>
+
+</body>
+</html>
