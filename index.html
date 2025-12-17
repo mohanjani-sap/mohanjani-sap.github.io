@@ -1,332 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- SEO & Indexing -->
-  <title>SyntaAI — AI for SAP Security & Compliance</title>
-  <meta name="description" content="SyntaAI — AI assistant and platform for SAP Security, Compliance & Audit teams. Fast demos, role-based tools, risk analytics." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://syntaai.com/" />
-
-  <!-- Open Graph (Social preview) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="SyntaAI — AI for SAP Security & Compliance" />
-  <meta property="og:description" content="AI assistant and platform for SAP Security, Compliance & Audit teams. SOD analysis, user administration and conversational workflows." />
-  <meta property="og:url" content="https://syntaai.com/" />
-  <!-- If you have an og:image, add it here -->
-  <!-- <meta property="og:image" content="https://syntaai.com/og-image.png" /> -->
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SyntaAI — AI for SAP Security & Compliance" />
-  <meta name="twitter:description" content="AI assistant and platform for SAP Security, Compliance & Audit teams." />
-
-  <!-- Structured data (Organization) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SyntaAI",
-    "url": "https://syntaai.com/",
-    "logo": "https://syntaai.com/favicon.ico",
-    "sameAs": [],
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "telephone": "",
-      "contactType": "customer support",
-      "email": "contact@syntaai.com"
-    }]
-  }
-  </script>
-
-  <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#5a6475; --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.04); --glass-2: rgba(255,255,255,0.7);
-      --success:#10b981;
-      --radius:14px;
-      --w:100%;
-      --shadow: 0 4px 14px rgba(0,0,0,0.08);
-      --glass-border: 1px solid rgba(255,255,255,0.04);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:linear-gradient(180deg,#f8f9fc 0%, #eef1f7 60%);color:#1a1d26;line-height:1.5;min-height:100vh}
-    .wrap{max-width:var(--w);margin:0;padding:28px 40px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.7), transparent);backdrop-filter:blur(6px);box-shadow:var(--shadow)}
-    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
-    .logo-bubble{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:grid;place-items:center;font-weight:700;box-shadow:0 6px 18px rgba(79,70,229,0.22)}
-    .brand h1{font-size:1.05rem}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:#475163;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
-    nav a.cta{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;padding:10px 14px;border-radius:12px;box-shadow:0 8px 30px rgba(124,58,237,0.18)}
-    /* hero */
-    .hero{display:grid;grid-template-columns:1fr 320px 380px;gap:20px;align-items:start;margin-top:28px}
-    .video-container{background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.85));padding:16px;border-radius:18px;box-shadow:var(--shadow);border:1px solid rgba(13,60,80,0.04)}
-    .video-container iframe{width:100%;height:220px;border-radius:12px;border:none}
-    .video-container h4{font-size:0.9rem;margin-bottom:10px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.85));padding:24px;border-radius:18px;box-shadow:var(--shadow);border:1px solid rgba(13,60,80,0.04)}
-    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.7);color:var(--muted);font-weight:700;margin-bottom:10px;font-size:0.8rem}
-    .hero h2{font-size:1.5rem;line-height:1.1;margin-bottom:10px;color:#0f1724;background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset}
-    .hero p.lead{color:#475163;margin-bottom:14px;font-size:0.95rem}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn.primary{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:white;box-shadow:0 10px 30px rgba(7,12,30,0.08);padding:14px 20px;transition:transform .18s ease,box-shadow .18s ease}.btn.primary:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(7,12,30,0.08)}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    /* quick stats */
-    .stats{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-    .stat{background:#ffffff;box-shadow:0 6px 18px rgba(16,24,40,0.06);padding:8px 10px;border-radius:10px;color:#0b2540;font-weight:700;font-size:0.85rem;border:1px solid rgba(255,255,255,0.7)}
-    /* cards column */
-    .panel{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.85));border:1px solid rgba(13,60,80,0.04)}
-    .panel h4{margin-bottom:8px;font-size:0.95rem}
-    .feature-list{display:grid;gap:10px}
-    .feature{display:flex;gap:10px;align-items:flex-start;padding:8px;border-radius:10px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.7)}
-    .feature .icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:grid;place-items:center;font-size:1rem;flex-shrink:0}
-    .feature p{color:#475163;font-size:0.85rem;line-height:1.4}
-    .feature strong{font-size:0.9rem;display:block;margin-bottom:2px}
-    /* features grid */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.7), transparent);padding:18px;border-radius:12px;border:1px solid rgba(13,60,80,0.04);box-shadow:0 10px 28px rgba(16,24,40,0.06)}
-    .card h3{color:#0b2540;margin-bottom:8px}
-    .card p{color:#475163;font-size:0.95rem}
-    /* use-cases + roles */
-    section h2{margin-bottom:8px}
-    .grid{display:grid;gap:12px}
-    .use-grid{grid-template-columns:repeat(2,1fr);margin-top:12px}
-    .pill{display:inline-block;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.7);color:var(--muted);font-weight:700}
-    /* footer */
-    footer{margin-top:34px;border-radius:12px;padding:22px;background:linear-gradient(180deg,#f3f5fb,#eaeef6);border:1px solid rgba(13,60,80,0.04)}
-    .footer-inner{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .social a{margin-left:10px;color:var(--muted);text-decoration:none}
-    /* responsive */
-    @media (max-width:1200px){
-      .hero{grid-template-columns:1fr 320px}
-      .video-container{grid-column:1 / -1;max-width:500px;margin:0 auto}
-    }
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .features{grid-template-columns:repeat(2,1fr)}
-      .use-grid{grid-template-columns:1fr}
-      nav a.hide-sm{display:none}
-    }
-    @media (max-width:560px){
-      .wrap{padding:12px;margin:18px auto}
-      nav{gap:8px}
-      .brand h1{font-size:0.95rem}
-      .features{grid-template-columns:1fr}
-    }
-    /* subtle entrance */
-    .appear{opacity:0;transform:translateY(8px);animation:appear .8s ease forwards}
-    .delay-1{animation-delay:.08s}.delay-2{animation-delay:.16s}.delay-3{animation-delay:.24s}
-    @keyframes appear{to{opacity:1;transform:none}}
-  
-    .svg-icon svg{display:block;margin:auto}
-    .feature .icon{display:flex;align-items:center;justify-content:center}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyntaAI - Complete SAP Security Automation Platform | User Administration & Vulnerability Management</title>
+    <meta name="description" content="SyntaAI provides AI-powered SAP security solutions featuring automated user administration and advanced vulnerability management at 70% lower cost than competitors.">
     
-</style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary-purple: #7C3AED;
+            --primary-teal: #14B8A6;
+        }
+        
+        .gradient-purple-teal {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-teal) 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="#">
-        <div class="logo-bubble">SA</div>
-        <div>
-          <h1 style="color:#0b2540">SyntaAI</h1>
-          <div style="font-size:0.78rem;color:var(--muted);margin-top:2px">SAP Security • Compliance • Audit</div>
-        </div>
-      </a>
+<body class="bg-gray-50">
 
-      <nav>
-        <a href="#contact" class="hide-sm">Contact</a>
-        <a href="#features" class="hide-sm">Features</a>
-        <a href="#how-it-works" class="hide-sm">How It Works</a>
-        <a href="#use-cases" class="hide-sm">Use Cases</a>
-        <a href="#roles" class="hide-sm">Teams</a>
-        <a href="#contact" class="cta">Request Demo</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <div class="hero">
-        <div class="hero-card appear delay-1">
-          <span class="kicker">Trusted by SAP teams</span>
-          <h2>Self-service SAP security, powered by AI. All tools integrated with an intelligent chatbot — SOD Analysis, GRC Operations, and User Administration, all accessible through conversational AI.</h2>
-          <p class="lead">Reduce SAP security risk with AI — faster audits, clearer remediation.</p>
-
-          <div class="cta-row">
-            <a class="btn primary" href="#contact">Get a Demo</a>
-            <a class="btn ghost" href="#features">See Features</a>
-          </div>
-
-          <div class="stats" aria-hidden="true">
-            <div class="stat">Avg time to resolve: <strong>2.3 hrs</strong></div>
-            <div class="stat">SOD issues detected: <strong>1,250+</strong></div>
-            <div class="stat">Integrated systems: <strong>6</strong></div>
-          </div>
-        </div>
-
-        <aside class="panel appear delay-2">
-          <h4>AI-Powered Quick Actions</h4>
-          <div class="feature-list" role="list">
-            <div class="feature"><div class="icon">🤖</div><div><strong>AI Chatbot Hub</strong><p>All features accessible through conversational AI — ask questions, run analyses, execute workflows. Role-based access control included.</p></div></div>
-            <div class="feature"><div class="icon svg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="white" stroke-width="1.5"/><path d="M7 7V5a5 5 0 0 1 10 0v2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>SOD Analysis (Bot Integrated)</strong><p>Ask the AI to find excessive privileges and risky role combinations instantly.</p></div></div>
-            <div class="feature"><div class="icon">🔁</div><div><strong>GRC Ops (Bot Integrated)</strong><p>Submit & track GRC requests through chat, send approvals to Teams/Email.</p></div></div>
-            <div class="feature"><div class="icon svg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" stroke="white" stroke-width="1.5"/><path d="M17 21v-2a4 4 0 0 0-4-4H9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>User Admin (Bot Integrated)</strong><p>Unlock users, reset passwords, manage roles — all via AI chatbot.</p></div></div>
-          </div>
-        </aside>
-
-        <div class="video-container appear delay-3">
-          <h4 style="margin-bottom:12px;color:#0b2540">See SyntaAI in Action</h4>
-          <iframe src="https://www.youtube-nocookie.com/embed/AYhQnsY0wdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <!-- Core features -->
-      <section id="features" class="appear delay-3" style="margin-top:28px">
-        <h2 style="color:#09203f">Core Capabilities</h2>
-        <p style="color:var(--muted);margin-bottom:12px">All the tools an SAP security team needs — packaged for speed and auditability.</p>
-
-        <div class="features">
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>AI Assistant + Knowledge Base</h3>
-            <p>Search policies, run guided investigations, and let the assistant draft remediation steps or RFC templates for your BASIS team.</p>
-          </div>
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>SOD & Risk Engine</h3>
-            <p>Compare rulesets, score risks, and export executive reports with recommended remediations.</p>
-          </div>
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>GRC & Workflow Automation</h3>
-            <p>End-to-end request submission, approval tracking, and notifications integrated with Teams/Email.</p>
-          </div>
-        </div>
-      
-</section>
-
-      <!-- Use cases -->
-      <section id="use-cases" style="margin-top:28px" class="appear delay-2">
-        <h2 style="color:#09203f">AI-Integrated Use Cases</h2>
-        <p style="color:#475163;margin-bottom:12px">All features are AI-powered and accessible through our intelligent chatbot.</p>
-        <div class="grid use-grid">
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>AI Chatbot Hub 🤖</h3>
-            <p>Instant answers, guided workflows and self-service — all through conversational AI.</p>
-          </div>
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>SOD Analysis (AI)</h3>
-            <p>Ask the bot to find excessive privileges and analyze risky role combinations instantly.</p>
-          </div>
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>GRC Operations (AI)</h3>
-            <p>Chat-based GRC request submission, tracking, and approval workflows via Teams/Email.</p>
-          </div>
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-            <h3>User Admin (AI)</h3>
-            <p>Unlock accounts, reset passwords, manage roles — all integrated with the AI chatbot.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- How It Works -->
-      <section id="how-it-works" style="margin-top:28px" class="appear delay-2">
-        <h2 style="color:#09203f">How It Works</h2>
-        <p style="color:#475163;margin-bottom:12px">Get started in minutes with our plug-and-play AI chatbot for SAP security.</p>
-        
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px">
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);position:relative">
-            <div style="position:absolute;top:-12px;left:20px;width:36px;height:36px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.1rem">1</div>
-            <h3 style="margin-top:12px">Plug & Play Integration</h3>
-            <p>Connect the AI chatbot to your SAP system in minutes. No complex setup — just plug and play for all SAP Security activities.</p>
-          </div>
-          
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);position:relative">
-            <div style="position:absolute;top:-12px;left:20px;width:36px;height:36px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.1rem">2</div>
-            <h3 style="margin-top:12px">AI-Powered Automation</h3>
-            <p>SOD Analysis, GRC Operations, and User Administration run automatically through conversational AI — just ask the chatbot.</p>
-          </div>
-          
-          <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);position:relative">
-            <div style="position:absolute;top:-12px;left:20px;width:36px;height:36px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.1rem">3</div>
-            <h3 style="margin-top:12px">Easily Customizable</h3>
-            <p>Extend beyond security — customize the chatbot for other SAP functionalities based on your unique requirements.</p>
-          </div>
-        </div>
-        
-        <div style="background:linear-gradient(180deg,rgba(124,58,237,0.05),rgba(6,182,212,0.05));border:1px solid rgba(124,58,237,0.1);border-radius:12px;padding:20px;margin-top:16px;text-align:center">
-          <h3 style="color:#09203f;margin-bottom:8px">🚀 Plug-and-Play Chatbot for Your SAP</h3>
-          <p style="color:#475163">Deploy our AI chatbot instantly for all SAP Security activities — SOD checks, user unlocks, GRC workflows, and more. Easily customizable for additional functionalities to match your organization's needs.</p>
-        </div>
-      </section>
-
-      <!-- Custom AI Use Cases -->
-      <section id="custom-ai" style="margin-top:28px" class="appear delay-3">
-        <div class="card" style="background:linear-gradient(135deg,#7c3aed,#06b6d4);color:white;padding:26px;border:none">
-          <h2 style="color:white;margin-bottom:8px">Custom AI Use Cases Built for You</h2>
-          <p style="color:rgba(255,255,255,0.9);font-size:1.05rem">Our AI platform adapts to your specific requirements. We build custom use cases, workflows, and integrations tailored to your SAP environment and security needs. From specialized compliance checks to unique approval workflows — powered by AI and accessible through the chatbot.</p>
-          <a href="#contact" class="btn" style="margin-top:16px;background:white;color:#7c3aed;display:inline-block">Discuss Custom Use Cases</a>
-        </div>
-      </section>
-
-      <!-- Roles -->
-      <section id="roles" style="margin-top:28px" class="appear delay-3">
-        <h2 style="color:#09203f">Who benefits</h2>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-          <div class="pill">Business Users — Self-service</div>
-          <div class="pill">SAP Security — Investigations & SOD</div>
-          <div class="pill">SAP BASIS — Technical ops</div>
-          <div class="pill">Compliance — Reports & Audit</div>
-        </div>
-      </section>
-
-      <!-- Contact / Demo -->
-      <section id="contact" style="margin-top:28px;background:#ffffff;padding:26px;border-radius:14px;border:1px solid rgba(9,32,63,0.04);box-shadow:0 10px 30px rgba(16,24,40,0.04);">
-        <div class="card" style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);box-shadow:0 6px 18px rgba(16,24,40,0.06);color:#1a1d26">
-          <h2>Request a demo</h2>
-          <p style="color:var(--muted)">Tell us about your environment and we'll prepare a tailored walkthrough.</p>
-          <form id="contactForm" action="https://formsubmit.co/contact@syntaai.com" method="POST" style="margin-top:12px;display:grid;gap:10px">
-            <input type="hidden" name="_subject" value="New Demo Request from SyntaAI Website">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <div style="display:flex;gap:10px">
-              <input name="firstName" placeholder="First name" required style="flex:1;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
-              <input name="lastName" placeholder="Last name" style="flex:1;padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-10 h-10 gradient-purple-teal rounded-lg mr-3"></div>
+                        <span class="text-xl font-bold gradient-text">SyntaAI</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium">Products</a>
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 font-medium">Features</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 font-medium">Pricing</a>
+                    <a href="#contact" class="gradient-purple-teal text-white px-6 py-2 rounded-lg hover:opacity-90 transition">Get Started</a>
+                </div>
             </div>
-            <input name="email" type="email" placeholder="Email" required style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
-            <input name="company" placeholder="Company" style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
-            <select name="requestType" required style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem">
-              <option value="">Select request</option>
-              <option value="demo">Request demo</option>
-              <option value="support">Support</option>
-              <option value="info">More info</option>
-            </select>
-            <textarea name="message" placeholder="Tell us about your SAP landscape..." rows="4" style="padding:12px;border-radius:10px;border:1.5px solid #d1d5db;background:#f9fafb;color:#1a1d26;font-size:0.95rem;resize:vertical"></textarea>
-            <div style="display:flex;gap:12px">
-              <button type="submit" class="btn primary">Send request</button>
-              <a href="mailto:contact@syntaai.com" class="btn ghost" style="display:inline-block;text-align:center">Contact: contact@syntaai.com</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-purple-teal py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    Complete SAP Security Automation Platform
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-purple-100">
+                    AI-Powered User Administration & Vulnerability Management
+                </p>
+                <p class="text-lg mb-10 max-w-3xl mx-auto text-purple-100">
+                    From automating SAP user lifecycle management to protecting your systems with advanced AI security analysis – 
+                    all at a fraction of enterprise tool costs.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#demo" class="bg-white text-purple-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
+                        Schedule Demo
+                    </a>
+                    <a href="#products" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                        Explore Products
+                    </a>
+                </div>
             </div>
-            <div id="msg" style="margin-top:8px;color:var(--muted);font-weight:700"></div>
-          </form>
         </div>
-      </section>
+    </section>
 
-      <!-- Footer -->
-      <footer class="appear delay-1" style="margin-top:18px">
-        <div class="footer-inner">
-          <div>
-            <strong>SyntaAI</strong><div style="color:#475163;font-size:0.9rem;margin-top:6px">SAP security, compliance & audit automation</div>
-            <div style="color:#475163;font-size:0.9rem;margin-top:6px">📧 <a href="mailto:contact@syntaai.com" style="color:#7c3aed;text-decoration:none">contact@syntaai.com</a></div>
-          </div>
-          <div style="color:#475163;font-size:0.95rem">© 2024 SyntaAI</div>
+    <!-- Products Overview -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Two Powerful Security Solutions, One Platform</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Complete SAP security automation - from user management to vulnerability protection
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Product 1: SAP User Administration -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            👥
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">SAP User Administration</h3>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6 text-lg">
+                        Automate SAP user lifecycle management with intelligent chatbot-driven workflows for security administrators.
+                    </p>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>User Provisioning & Deprovisioning</strong> - Automated user lifecycle management</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Self-Service Portal</strong> - Password resets, account unlocks, access requests, and GRC submissions</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Termination Automation</strong> - Streamlined offboarding and access revocation</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>GRC Integration</strong> - Automated access submissions and compliance workflows</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Role Management</strong> - Automated role assignments and access approvals</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#user-admin" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                        Learn More →
+                    </a>
+                </div>
+
+                <!-- Product 2: Syntasec SAP Security -->
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-8 hover:shadow-2xl transition border-2 border-teal-400">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            🔒
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Syntasec Security Platform</h3>
+                            <span class="inline-block bg-teal-600 text-white text-xs px-3 py-1 rounded-full mt-1">NEW ✨</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6 text-lg">
+                        AI-powered SAP vulnerability scanning and patch management that transforms complex data into actionable business intelligence.
+                    </p>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>AI Business Impact Analysis</strong> - Not just CVE numbers, real business risk</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Real-Time Scanning</strong> - Automated detection of 10+ vulnerability types</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Intelligent Patch Management</strong> - AI-generated deployment strategies</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Enterprise-Grade Security</strong> - At mid-market pricing</span>
+                        </div>
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-teal-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700"><strong>Configurable Controls</strong> - 21+ rules plus custom security checks</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#syntasec" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition">
+                        Discover Syntasec →
+                    </a>
+                </div>
+            </div>
         </div>
-      </footer>
-    </main>
-  </div>
+    </section>
 
-  <script>
-    // Form is now handled by FormSubmit - emails will be sent automatically
-  </script>
-</body>
-</html>
+    <!-- User Administration Details -->
+    <section id="user-admin" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    SAP User Administration Automation
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Streamline SAP security operations with intelligent automation powered by conversational AI
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">Chatbot-Driven User Management</h3>
+                    <p class="text-lg text-gray-700 mb-6">
+                        SAP security administrators can manage the complete user lifecycle through natural language commands. 
+                        No more navigating complex SAP screens - just ask the chatbot.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 rounded-full p-2 mr-4">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Instant Provisioning</h4>
+                                <p class="text-gray-600">Create new users, assign roles, and set up access in seconds</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 rounded-full p-2 mr-4">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Self-Service Empowerment</h4>
+                                <p class="text-gray-600">Users reset passwords and request access without IT tickets</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 rounded-full p-2 mr-4">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Compliance Ready</h4>
+                                <p class="text-gray-600">Automated audit trails and GRC integration for SOX compliance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="space-y-4">
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <p class="text-sm text-gray-600 mb-2">Administrator:</p>
+                            <p class="text-gray-900">"Create user account for John Smith in Finance"</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <p class="text-sm text-gray-600 mb-2">Chatbot:</p>
+                            <p class="text-gray-900">✅ User created successfully<br>
+                            Username: JSMITH<br>
+                            Roles: FI_CLERK, FI_VIEWER<br>
+                            Initial password sent to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="147e7b7c7a3a67797d607c54777b7964757a6d3a777b79">[email&#160;protected]</a></p>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <p class="text-sm text-gray-600 mb-2">Administrator:</p>
+                            <p class="text-gray-900">"Lock account for Sarah Jones - terminated today"</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <p class="text-sm text-gray-600 mb-2">Chatbot:</p>
+                            <p class="text-gray-900">✅ Account SJONES locked<br>
+                            ✅ All active sessions terminated<br>
+                            ✅ Access revoked from: PRD, QAS<br>
+                            ✅ Termination workflow initiated</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syntasec Detailed Section -->
+    <section id="syntasec" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Syntasec: AI-Powered SAP Vulnerability Management
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Unlike traditional tools that show technical CVE numbers, Syntasec uses Claude AI to analyze business impact, 
+                    prioritize remediation, and generate strategic patch plans.
+                </p>
+            </div>
+
+            <!-- Key Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">Hybrid AI Architecture</h3>
+                    <p class="text-gray-300">
+                        Choose between rule-based (instant, private), cloud AI (best quality), or local AI (on-premise) analysis modes.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">Real-Time Detection</h3>
+                    <p class="text-gray-300">
+                        Automated scanning detects 10+ vulnerability types: missing patches, misconfigurations, authorization issues, and more.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">Configurable Controls</h3>
+                    <p class="text-gray-300">
+                        21+ pre-built security rules plus the ability to add custom industry-specific checks for your environment.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">Smart Dashboard</h3>
+                    <p class="text-gray-300">
+                        Real-time vulnerability statistics, trend analysis, risk scoring, and export capabilities (Excel/PDF).
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">Intelligent Patching</h3>
+                    <p class="text-gray-300">
+                        AI-generated multi-phase patch plans with timelines, resource estimates, and impact analysis.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition">
+                    <div class="text-4xl mb-4">☁️</div>
+                    <h3 class="text-xl font-bold mb-3 text-teal-400">SAP RISE Ready</h3>
+                    <p class="text-gray-300">
+                        Built for modern SAP RISE deployments with hybrid monitoring for cloud and on-premise systems.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="bg-gray-800 rounded-2xl p-8">
+                <h3 class="text-3xl font-bold text-center mb-8">Why Choose Syntasec?</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-teal-400">✅ AI-Powered Intelligence</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li>Business impact analysis for every vulnerability</li>
+                            <li>Conversational chatbot interface</li>
+                            <li>Hybrid AI modes (Rule-based, Cloud, Local)</li>
+                            <li>Real-time threat assessment</li>
+                            <li>Automated remediation planning</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-teal-400">✅ Enterprise Features, Mid-Market Price</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            <li>Complete vulnerability management platform</li>
+                            <li>Professional implementation in days, not months</li>
+                            <li>Intuitive interface requiring minimal training</li>
+                            <li>Configurable security controls for your industry</li>
+                            <li>SAP RISE ready for modern cloud deployments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Transparent Pricing</h2>
+                <p class="text-xl text-gray-600">Choose the plan that fits your organization</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic -->
+                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-xl transition">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$3,000</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>1-3 SAP systems</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Automated scanning</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Basic AI analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>User administration</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Professional (Featured) -->
+                <div class="border-2 border-teal-500 rounded-2xl p-8 hover:shadow-2xl transition relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$5,000</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>4-10 SAP systems</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Advanced AI analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Custom scan controls</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Patch management</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center gradient-purple-teal text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-xl transition">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">Custom</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Unlimited systems</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Unlimited AI analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Custom integrations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>24/7 support + SLA</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-lg text-gray-600 mb-4">
+                    Enterprise-grade security at mid-market pricing
+                </p>
+                <p class="text-sm text-gray-500">
+                    Annual discounts available • 30-day free trial • No credit card required
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="gradient-purple-teal py-20 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Secure Your SAP Systems?</h2>
+            <p class="text-xl mb-10 text-purple-100">
+                Join companies already using our complete SAP security automation platform
+            </p>
+            
+            <div class="bg-white rounded-2xl p-8 text-left">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Request a Demo</h3>
+                <form id="contactForm" action="https://formsubmit.co/contact@syntaai.com" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="New Demo Request from SyntaAI Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" name="firstName" placeholder="First Name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                        <input type="text" name="lastName" placeholder="Last Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                    </div>
+                    <input type="email" name="email" placeholder="Work Email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                    <input type="text" name="company" placeholder="Company Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Which solution interests you?</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="product_user_admin" value="SAP User Administration" class="w-5 h-5 text-purple-600 rounded">
+                                <span class="ml-3 text-gray-700">SAP User Administration Automation</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="product_syntasec" value="Syntasec Security" class="w-5 h-5 text-teal-600 rounded">
+                                <span class="ml-3 text-gray-700">Syntasec Security & Vulnerability Management</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="product_both" value="Both Products" class="w-5 h-5 text-purple-600 rounded">
+                                <span class="ml-3 text-gray-700">Both (Complete SAP Security Platform)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <select name="requestType" required class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                        <option value="">Select request type</option>
+                        <option value="demo">Request demo</option>
+                        <option value="support">Support</option>
+                        <option value="info">More info</option>
+                    </select>
+
+                    <select name="sapSystems" class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none">
+                        <option value="">Number of SAP Systems</option>
+                        <option value="1-3">1-3 systems</option>
+                        <option value="4-10">4-10 systems</option>
+                        <option value="11-25">11-25 systems</option>
+                        <option value="25+">25+ systems</option>
+                    </select>
+
+                    <textarea name="message" placeholder="Tell us about your SAP landscape and requirements..." rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 focus:ring-2 focus:ring-purple-600 outline-none resize-vertical"></textarea>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button type="submit" class="flex-1 gradient-purple-teal text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition">
+                            Send Request
+                        </button>
+                        <a href="mailto:contact@syntaai.com" class="flex-1 text-center border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-50 transition">
+                            Email Us Directly
+                        </a>
+                    </div>
+                    
+                    <div class="text-center text-sm text-gray-600">
+                        📧 <a href="mailto:contact@syntaai.com" class="text-purple-600 hover:underline">contact@syntaai.com</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#user-admin" class="text-gray-400 hover:text-white">User Administration</a></li>
+                        <li><a href="#syntasec" class="text-gray-400 hover:text-white">Syntasec Security</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 SyntaAI. All rights reserved. | <a href="/cdn-cgi/l/email-protection#0a6965647e6b697e4a7973647e6b6b6324696567" class="hover:text-white"
