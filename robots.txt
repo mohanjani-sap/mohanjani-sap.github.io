@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
 Sitemap: https://syntaai.com/sitemap.xml
+
+# Allow all pages
+Disallow:
+
+# Crawl-delay (optional, helps with crawl budget)
+Crawl-delay: 1
