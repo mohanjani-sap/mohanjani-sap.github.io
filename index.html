@@ -1397,6 +1397,258 @@
                 font-size: 2rem;
             }
         }
+        /* Why Choose SyntaAI Section */
+        #why-syntaai {
+            background: var(--white);
+            padding: 6rem 2rem;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .advantage-card {
+            background: var(--off-white);
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .advantage-card:hover {
+            border-color: var(--primary-teal);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .advantage-card.highlight {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+            border-color: var(--primary-coral);
+        }
+
+        .advantage-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .advantage-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .advantage-content p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .advantage-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .advantage-stat .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-coral);
+        }
+
+        .advantage-stat .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Comparison Banner */
+        .comparison-banner {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            background: var(--off-white);
+            border: 1px solid var(--border-gray);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .banner-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+        }
+
+        .banner-content.syntaai h3 {
+            color: var(--primary-teal);
+        }
+
+        .comparison-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .compare-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .compare-item .compare-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .compare-item.negative .compare-icon {
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--accent-rose);
+        }
+
+        .compare-item.negative span:last-child {
+            color: var(--text-medium);
+        }
+
+        .compare-item.positive .compare-icon {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+
+        .compare-item.positive span:last-child {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .banner-divider {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-dark);
+        }
+
+        .trust-item p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        /* Why CTA */
+        .why-cta {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(13, 148, 136, 0.05) 100%);
+            border-radius: 16px;
+        }
+
+        .why-cta p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive for Why SyntaAI */
+        @media (max-width: 1024px) {
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-banner {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .banner-divider {
+                width: 50px;
+                height: 50px;
+                margin: 0 auto;
+            }
+
+            .trust-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantage-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .advantage-stat {
+                justify-content: center;
+            }
+
+            .trust-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1413,6 +1665,7 @@
                 <a href="#user-admin" class="nav-link">User Admin</a>
                 <a href="#syntasec" class="nav-link">Syntasec</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#why-syntaai" class="nav-link">Why Us</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
                 <div class="nav-cta">
                     <a href="https://demo.syntaai.com" class="btn btn-outline" target="_blank">
@@ -1870,6 +2123,173 @@
             </div>
         </div>
     </div>
+    <!-- Why Choose SyntaAI Section -->
+    <section id="why-syntaai">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Why SyntaAI</span>
+                <h2 class="section-title">The Smarter Choice for SAP Security</h2>
+                <p class="section-subtitle">Enterprise-grade protection without the enterprise price tag or complexity</p>
+            </div>
+
+            <!-- Main Advantages Grid -->
+            <div class="advantages-grid fade-in">
+                <div class="advantage-card highlight">
+                    <div class="advantage-icon">💰</div>
+                    <div class="advantage-content">
+                        <h3>70% Lower Cost</h3>
+                        <p>Starting at <strong>$60K/year</strong> vs. industry average of $200K-$300K. Enterprise features without the enterprise price.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">$60K</span>
+                            <span class="stat-label">Starting Annual Cost</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚡</div>
+                    <div class="advantage-content">
+                        <h3>2-4 Week Implementation</h3>
+                        <p>Go live in weeks, not months. No lengthy consulting engagements or complex deployments.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">2-4</span>
+                            <span class="stat-label">Weeks to Deploy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🤖</div>
+                    <div class="advantage-content">
+                        <h3>Full AI Analysis Included</h3>
+                        <p>Complete AI-powered vulnerability analysis with every plan. No limited tiers or cloud-only restrictions.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">AI Coverage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">💬</div>
+                    <div class="advantage-content">
+                        <h3>Native MS Teams Integration</h3>
+                        <p>True self-service via Microsoft Teams. Users get help instantly without leaving their workflow.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">Teams</span>
+                            <span class="stat-label">Native Bot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🏢</div>
+                    <div class="advantage-content">
+                        <h3>On-Premise Option</h3>
+                        <p>Keep sensitive data in-house. Deploy on your infrastructure with full control and compliance.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">Your</span>
+                            <span class="stat-label">Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <div class="advantage-content">
+                        <h3>Built for Mid-Market</h3>
+                        <p>Purpose-built for companies with 1-25 SAP systems. Not a stripped-down enterprise tool.</p>
+                        <div class="advantage-stat">
+                            <span class="stat-number">1-25</span>
+                            <span class="stat-label">SAP Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Banner -->
+            <div class="comparison-banner fade-in">
+                <div class="banner-content">
+                    <h3>Traditional Solutions vs. SyntaAI</h3>
+                    <div class="comparison-items">
+                        <div class="compare-item negative">
+                            <span class="compare-icon">✕</span>
+                            <span>$200K-$300K annual cost</span>
+                        </div>
+                        <div class="compare-item negative">
+                            <span class="compare-icon">✕</span>
+                            <span>3-6 month implementation</span>
+                        </div>
+                        <div class="compare-item negative">
+                            <span class="compare-icon">✕</span>
+                            <span>Limited or no AI analysis</span>
+                        </div>
+                        <div class="compare-item negative">
+                            <span class="compare-icon">✕</span>
+                            <span>Complex, outdated interfaces</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-divider">
+                    <span>VS</span>
+                </div>
+                <div class="banner-content syntaai">
+                    <h3>SyntaAI Advantage</h3>
+                    <div class="comparison-items">
+                        <div class="compare-item positive">
+                            <span class="compare-icon">✓</span>
+                            <span>Starting at $60K/year</span>
+                        </div>
+                        <div class="compare-item positive">
+                            <span class="compare-icon">✓</span>
+                            <span>Live in 2-4 weeks</span>
+                        </div>
+                        <div class="compare-item positive">
+                            <span class="compare-icon">✓</span>
+                            <span>Full AI analysis included</span>
+                        </div>
+                        <div class="compare-item positive">
+                            <span class="compare-icon">✓</span>
+                            <span>Modern chatbot interface</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="trust-section fade-in">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <h4>Enterprise Security</h4>
+                    <p>SOC 2 compliant infrastructure</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">☁️</div>
+                    <h4>SAP RISE Ready</h4>
+                    <p>Built for modern cloud deployments</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <h4>GRC Integration</h4>
+                    <p>Seamless compliance workflows</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">📞</div>
+                    <h4>Dedicated Support</h4>
+                    <p>Real humans, fast response times</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="why-cta fade-in">
+                <p>See why mid-market companies are switching to SyntaAI</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary btn-lg">Get Custom Quote</a>
+                    <a href="https://demo.syntaai.com" class="btn btn-outline btn-lg" target="_blank">Try Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Pricing Section -->
     <section id="pricing">
         <div class="section-container">
