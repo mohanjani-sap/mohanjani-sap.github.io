@@ -1175,6 +1175,228 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
+        /* How It Works / Platform Overview Section */
+        #how-it-works {
+            background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
+            padding: 6rem 2rem;
+        }
+
+        .platform-overview {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .overview-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            cursor: pointer;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-gray);
+        }
+
+        .overview-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .overview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 41, 59, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overview-image-container:hover .overview-overlay {
+            opacity: 1;
+        }
+
+        .overview-image-container:hover .overview-image {
+            transform: scale(1.02);
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: white;
+        }
+
+        .overlay-content svg {
+            margin-bottom: 1rem;
+        }
+
+        .overlay-content span {
+            display: block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .overview-highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .highlight-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--primary-coral);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        .overview-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            padding: 2rem;
+            overflow: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-coral);
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .lightbox-caption h3 {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .lightbox-caption p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive for How It Works */
+        @media (max-width: 1024px) {
+            .overview-highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .overview-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-cta {
+                flex-direction: column;
+            }
+
+            .overview-cta .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .lightbox {
+                padding: 1rem;
+            }
+
+            .lightbox-close {
+                top: -40px;
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1190,6 +1412,7 @@
                 <a href="#products" class="nav-link">Products</a>
                 <a href="#user-admin" class="nav-link">User Admin</a>
                 <a href="#syntasec" class="nav-link">Syntasec</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
                 <div class="nav-cta">
                     <a href="https://demo.syntaai.com" class="btn btn-outline" target="_blank">
@@ -1571,6 +1794,82 @@
             </div>
         </div>
     </section>
+    <!-- How It Works / Platform Overview Section -->
+    <section id="how-it-works">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-label">Platform Overview</span>
+                <h2 class="section-title">See How SyntaAI Works</h2>
+                <p class="section-subtitle">A comprehensive look at our AI-powered SAP security platform — from vulnerability scanning to automated user management</p>
+            </div>
+
+            <div class="platform-overview fade-in">
+                <div class="overview-image-container" onclick="openLightbox()">
+                    <img src="platform-overview.png" alt="SyntaAI Platform Overview - Comprehensive SAP Security & Automation" class="overview-image">
+                    <div class="overview-overlay">
+                        <div class="overlay-content">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="M21 21l-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                            <span>Click to View Full Size</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-highlights">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🔍</div>
+                        <h4>Syntasec Dashboard</h4>
+                        <p>Central security & vulnerability management with AI-powered analysis</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🤖</div>
+                        <h4>Conversational AI</h4>
+                        <p>MS Teams bot & web chatbot for automated SAP operations</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">📊</div>
+                        <h4>Real-Time Analytics</h4>
+                        <p>Dashboard analytics with vulnerability trends & risk scoring</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">⚡</div>
+                        <h4>Automated Operations</h4>
+                        <p>Self-service password resets, user terminations & GRC submissions</p>
+                    </div>
+                </div>
+
+                <div class="overview-cta">
+                    <button class="btn btn-primary btn-lg" onclick="openLightbox()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        View Full Platform Overview
+                    </button>
+                    <a href="#contact" class="btn btn-teal btn-lg">
+                        Schedule a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+            <img src="platform-overview.png" alt="SyntaAI Platform Overview">
+            <div class="lightbox-caption">
+                <h3>SyntaAI: The AI-Powered SAP Security Platform</h3>
+                <p>Complete overview of Syntasec Dashboard & Conversational Automation capabilities</p>
+            </div>
+        </div>
+    </div>
     <!-- Pricing Section -->
     <section id="pricing">
         <div class="section-container">
@@ -1928,6 +2227,26 @@
     </footer>
 
     <script>
+        // Lightbox functionality
+        function openLightbox() {
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.classList.contains('lightbox') || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
         // Navigation scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
