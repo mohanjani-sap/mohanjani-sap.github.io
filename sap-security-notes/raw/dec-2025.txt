@@ -1,0 +1,144 @@
+# SAP Security Patch Day - December 2025
+# Source: https://support.sap.com/en/my-support/knowledge-base/security-notes-news/december-2025.html
+# Paste raw data below this line:
+
+3685270
+
+[CVE-2025-42880] Code Injection vulnerability in SAP Solution Manager
+Product - SAP Solution Manager
+Version(s) - ST 720
+
+Critical
+
+9.9
+
+3683579
+
+[CVE-2025-55754] Multiple vulnerabilities in Apache Tomcat within SAP Commerce Cloud
+Related CVE - CVE-2025-55752
+Product - SAP Commerce Cloud
+Version(s) - HY_COM 2205, COM_CLOUD 2211, COM_CLOUD 2211-JDK21
+
+Critical
+
+9.6
+
+3685286
+
+[CVE-2025-42928] Deserialization Vulnerability in SAP jConnect - SDK for ASE
+Product - SAP jConnect - SDK for ASE
+Version(s) - SYBASE_SOFTWARE_DEVELOPER_KIT 16.0.4, 16.1
+
+Critical
+
+9.1
+
+3684682
+
+[CVE-2025-42878] Sensitive Data Exposure in SAP Web Dispatcher and Internet Communication Manager (ICM)
+Product - SAP Web Dispatcher and Internet Communication Manager (ICM)
+Version(s) - KRNL64NUC 7.22, 7.22EXT, KRNL64UC 7.22, 7.22EXT, 7.53, WEBDISP 7.22_EXT, 7.53, 7.54, 7.77, 7.89, 7.93, 9.16, KERNEL 7.22, 7.53, 7.54, 7.77, 7.89, 7.93, 9.16
+
+High
+
+8.2
+
+3640185
+
+[CVE-2025-42874] Denial of service (DOS) in SAP NetWeaver (remote service for Xcelsius)
+Product - SAP NetWeaver (remote service for Xcelsius)
+Version(s) - BI-BASE-E 7.50, BI-BASE-B 7.50, BI-IBC 7.50, BI-BASE-S 7.50, BIWEBAPP 7.50
+
+High
+
+7.9
+
+3650226
+
+[CVE-2025-48976] Denial of service (DOS) in SAP Business Objects
+Product - SAP Business Objects
+Version(s) - ENTERPRISE 430, 2025, 2027
+
+High
+
+7.5
+
+3677544
+
+[CVE-2025-42877] Memory Corruption vulnerability in SAP Web Dispatcher, Internet Communication Manager and SAP Content Server
+Product - SAP Web Dispatcher, Internet Communication Manager and SAP Content Server
+Version(s) - KRNL64UC 7.53, WEBDISP 7.53, 7.54, XS_ADVANCED_RUNTIME 1.00, SAP_EXTENDED_APP_SERVICES 1, CONTSERV 7.53, 7.54, KERNEL 7.53, 7.54
+
+High
+
+7.5
+
+3672151
+
+[CVE-2025-42876] Missing Authorization Check in SAP S/4 HANA Private Cloud (Financials General Ledger)
+Product - SAP S/4 HANA Private Cloud (Financials General Ledger)
+Version(s) - S4CORE 104, 105, 106, 107, 108, 109
+
+High
+
+7.1
+
+3591163
+
+[CVE-2025-42875] Missing Authentication check in SAP NetWeaver Internet Communication Framework
+Product - SAP NetWeaver Internet Communication Framework
+Version(s) - SAP_BASIS 700, SAP_BASIS 701, SAP_BASIS 702, SAP_BASIS 731, SAP_BASIS 740, SAP_BASIS 750, SAP_BASIS 751, SAP_BASIS 752, SAP_BASIS 753, SAP_BASIS 754, SAP_BASIS 755, SAP_BASIS 756, SAP_BASIS 757, SAP_BASIS 758
+
+Medium
+
+6.6
+
+3662324
+
+[CVE-2025-42904] Information Disclosure vulnerability in Application Server ABAP
+Product - Application Server ABAP
+Version(s) - KRNL64UC 7.53, KERNEL 7.53, 7.54, 7.77, 7.89, 7.93, 9.16, 9.17
+
+Medium
+
+6.5
+
+3662622
+
+[CVE-2025-42872] Cross-Site Scripting (XSS) vulnerability in SAP NetWeaver Enterprise Portal
+Product - SAP NetWeaver Enterprise Portal
+Version(s) - EP-RUNTIME 7.50
+
+Medium
+
+6.1
+
+3676970
+
+[CVE-2025-42873] Denial of Service (DoS) in SAPUI5 framework (Markdown-it component)
+Product - SAPUI5 framework (Markdown-it component)
+Version(s) - SAP_UI 755, 756, 757, 758
+
+Medium
+
+5.9
+
+3659117
+
+[CVE-2025-42891] Missing Authorization check in SAP Enterprise Search for ABAP
+Product - SAP Enterprise Search for ABAP
+Version(s) - SAP_BASIS 752, SAP_BASIS 753, SAP_BASIS 754, SAP_BASIS 755, SAP_BASIS 756, SAP_BASIS 757, SAP_BASIS 758, SAP_BASIS 816
+
+Medium
+
+5.5
+
+3651390
+
+[CVE-2025-42896] Server-Side Request Forgery (SSRF) in SAP BusinessObjects Business Intelligence Platform
+Product - SAP BusinessObjects Business Intelligence Platform
+Version(s) - ENTERPRISE 430, 2025, 2027
+
+Medium
+
+5.4
