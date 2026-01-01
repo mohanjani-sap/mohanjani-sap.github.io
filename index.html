@@ -368,7 +368,6 @@
                 <p class="section-subtitle">Complete SAP security automation — from user management to vulnerability protection</p>
             </div>
             <div class="products-grid">
-                <!-- SAP User Administration -->
                 <div class="product-card fade-in">
                     <div class="product-icon">👥</div>
                     <h3>SAP User Administration</h3>
@@ -382,7 +381,6 @@
                     </ul>
                     <a href="#user-admin" class="btn btn-primary">Learn More →</a>
                 </div>
-                <!-- Syntasec Security -->
                 <div class="product-card featured fade-in">
                     <span class="product-badge">ENHANCED ✨</span>
                     <div class="product-icon">🛡️</div>
@@ -436,7 +434,7 @@
                     <div class="chat-header"><div class="chat-avatar">🤖</div><div class="chat-info"><h4>SyntaAI Assistant</h4><span>Online</span></div></div>
                     <div class="chat-messages">
                         <div class="chat-message user">Create user account for John Smith in Finance department</div>
-                        <div class="chat-message bot"><span class="success">✓ User created successfully</span><br><br><strong>Username:</strong> <code>JSMITH</code><br><strong>Roles:</strong> FI_CLERK, FI_VIEWER<br><strong>Status:</strong> Active<br><br>Initial password sent to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1872777076366b75716c70587b777568797661367b7775">[email&#160;protected]</a></div>
+                        <div class="chat-message bot"><span class="success">✓ User created successfully</span><br><br><strong>Username:</strong> <code>JSMITH</code><br><strong>Roles:</strong> FI_CLERK, FI_VIEWER<br><strong>Status:</strong> Active<br><br>Initial password sent to john.smith@company.com</div>
                         <div class="chat-message user">/sap unlock SJONES</div>
                         <div class="chat-message bot"><span class="success">✓ Account SJONES unlocked</span><br><span class="success">✓ User notified via email</span><br><br><em>Unlocked by: Mike Johnson (via MS Teams)</em></div>
                     </div>
@@ -542,7 +540,16 @@
                 <div class="trust-item"><div class="trust-icon">🛡️</div><h4>GRC Integration</h4><p>Seamless compliance workflows</p></div>
                 <div class="trust-item"><div class="trust-icon">📞</div><h4>Dedicated Support</h4><p>Real humans, fast response times</p></div>
             </div>
-            <div class="why-cta fade-in"><p>See why mid-market companies are switching to SyntaAI</p><div class="cta-buttons"><a href="#contact" class="btn btn-primary btn-lg">Get Custom Quote</a><a href="https://
+            <div class="why-cta fade-in">
+                <p>See why mid-market companies are switching to SyntaAI</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary btn-lg">Get Custom Quote</a>
+                    <a href="https://demo.syntaai.com" class="btn btn-teal btn-lg" target="_blank">Try Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section id="pricing">
         <div class="section-container">
@@ -621,46 +628,33 @@
                     <h2>Ready to <span class="gradient-text">Secure</span> Your SAP Systems?</h2>
                     <p>Join companies already using our complete SAP security automation platform</p>
                 </div>
-                <form class="contact-form fade-in" action="https://formsubmit.co/contact@syntaai.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Demo Request from SyntaAI Website">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                <form class="contact-form fade-in" action="https://docs.google.com/forms/d/e/1FAIpQLSfD_u9zVJJZQpksulKpgOrJf6kadF5-NNL1rfqyih9wSkL5MA/formResponse" method="POST" target="_blank" onsubmit="submitToGoogle(event)">
                     <div class="form-row">
-                        <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" name="firstName" placeholder="John" required></div>
-                        <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" placeholder="Smith"></div>
+                        <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" name="entry.1703733875" placeholder="John" required></div>
+                        <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="entry.1335441498" placeholder="Smith"></div>
                     </div>
-                    <div class="form-group"><label for="email">Work Email *</label><input type="email" id="email" name="email" placeholder="john.smith@company.com" required></div>
-                    <div class="form-group"><label for="company">Company Name</label><input type="text" id="company" name="company" placeholder="Acme Corporation"></div>
+                    <div class="form-group"><label for="email">Work Email *</label><input type="email" id="email" name="entry.1183471405" placeholder="john.smith@company.com" required></div>
+                    <div class="form-group"><label for="company">Company Name</label><input type="text" id="company" name="entry.966649018" placeholder="Acme Corporation"></div>
                     <div class="form-group">
                         <label>Which solution interests you?</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-item"><input type="checkbox" name="product_user_admin" value="SAP User Administration"><span>SAP User Administration Automation</span></label>
-                            <label class="checkbox-item"><input type="checkbox" name="product_syntasec" value="Syntasec Security"><span>Syntasec Security & Vulnerability Management</span></label>
-                            <label class="checkbox-item"><input type="checkbox" name="product_both" value="Both Products"><span>Both (Complete SAP Security Platform)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="SAP User Administration Automation"><span>SAP User Administration Automation</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Syntasec Security &amp; Vulnerability Management"><span>Syntasec Security & Vulnerability Management</span></label>
+                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Both (Complete SAP Security Platform)"><span>Both (Complete SAP Security Platform)</span></label>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group"><label for="requestType">Request Type *</label><select id="requestType" name="requestType" required><option value="">Select request type</option><option value="demo">Request Demo</option><option value="pricing">Pricing Information</option><option value="support">Support</option><option value="info">General Inquiry</option></select></div>
-                        <div class="form-group"><label for="sapSystems">Number of SAP Systems</label><select id="sapSystems" name="sapSystems"><option value="">Select range</option><option value="1-3">1-3 systems</option><option value="4-10">4-10 systems</option><option value="11-25">11-25 systems</option><option value="25+">25+ systems</option></select></div>
+                        <div class="form-group"><label for="requestType">Request Type *</label><select id="requestType" name="entry.1641806699" required><option value="">Select request type</option><option value="request demo">Request Demo</option><option value="pricing information">Pricing Information</option><option value="support">Support</option><option value="general enquiry">General Inquiry</option></select></div>
+                        <div class="form-group"><label for="sapSystems">Number of SAP Systems</label><select id="sapSystems" name="entry.949597304"><option value="">Select range</option><option value="1-3 systens">1-3 systems</option><option value="4-10 systems">4-10 systems</option><option value="11-25 systems">11-25 systems</option><option value="25+ systems">25+ systems</option></select></div>
                     </div>
-                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="4" placeholder="Tell us about your SAP landscape and requirements..."></textarea></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="entry.133975214" rows="4" placeholder="Tell us about your SAP landscape and requirements..."></textarea></div>
                     <div class="form-actions"><button type="submit" class="btn btn-primary btn-lg">Send Request</button></div>
                     <div class="contact-info"><p>📧 Email us directly: <a href="mailto:contact@syntaai.com">contact@syntaai.com</a></p><p style="margin-top: 0.5rem;">🎮 Try the demo: <a href="https://demo.syntaai.com" target="_blank">demo.syntaai.com</a></p></div>
                 </form>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo"><div class="logo-icon">S</div><span class="logo-text">Synta<span>AI</span></span></a>
-                    <p>AI-powered SAP security automation platform. Enterprise-grade protection at mid-market pricing.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                        <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+</a>
                     </div>
                 </div>
                 <div class="footer-col"><h4>Products</h4><ul><li><a href="#user-admin">User Administration</a></li><li><a href="#syntasec">Syntasec Security</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://demo.syntaai.com" target="_blank">Live Demo</a></li></ul></div>
@@ -676,6 +670,16 @@
     </footer>
 
     <script>
+        function submitToGoogle(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            fetch(form.action, { method: 'POST', body: formData, mode: 'no-cors' }).then(() => {
+                form.innerHTML = '<div style="text-align: center; padding: 3rem;"><div style="font-size: 4rem; margin-bottom: 1rem;">✅</div><h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">Thank You!</h3><p style="color: var(--text-medium); margin-bottom: 1.5rem;">Your request has been submitted successfully.<br>We will get back to you within 24 hours.</p><a href="#" onclick="location.reload()" class="btn btn-primary">Submit Another Request</a></div>';
+            }).catch(() => {
+                form.innerHTML = '<div style="text-align: center; padding: 3rem;"><div style="font-size: 4rem; margin-bottom: 1rem;">✅</div><h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">Thank You!</h3><p style="color: var(--text-medium); margin-bottom: 1.5rem;">Your request has been submitted successfully.<br>We will get back to you within 24 hours.</p><a href="#" onclick="location.reload()" class="btn btn-primary">Submit Another Request</a></div>';
+            });
+        }
         function openLightbox() { document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeLightbox(event) { if (event.target.classList.contains('lightbox') || event.target.classList.contains('lightbox-close')) { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } }
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } });
@@ -686,9 +690,9 @@
         mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); }); });
         document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, observerOptions);
-        document.querySelectorAll('.fade-in').forEach(el => { observer.observe(el); });
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
