@@ -9,315 +9,264 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --white: #ffffff;
-            --off-white: #fafbfc;
-            --light-gray: #f1f5f9;
-            --border-gray: #e2e8f0;
-            --text-dark: #1e293b;
-            --text-medium: #475569;
-            --text-light: #64748b;
-            --primary-coral: #f97316;
-            --primary-coral-dark: #ea580c;
-            --primary-teal: #0d9488;
-            --primary-teal-dark: #0f766e;
-            --accent-indigo: #6366f1;
-            --accent-emerald: #10b981;
-            --accent-rose: #f43f5e;
-            --accent-amber: #f59e0b;
-            --gradient-primary: linear-gradient(135deg, #f97316 0%, #0d9488 100%);
-            --gradient-coral: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
-            --gradient-teal: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
-            --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.03);
-            --shadow-glow-coral: 0 10px 40px -10px rgba(249, 115, 22, 0.3);
-            --shadow-glow-teal: 0 10px 40px -10px rgba(13, 148, 136, 0.3);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--text-dark); }
-        .gradient-text { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .coming-soon-badge { display: inline-flex; align-items: center; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.55rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 50px; text-transform: uppercase; margin-left: 0.4rem; animation: pulse-badge 2s ease infinite; }
-        @keyframes pulse-badge { 0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); } 50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); } }
-        .new-badge { display: inline-flex; background: var(--gradient-teal); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.55rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 50px; text-transform: uppercase; margin-left: 0.4rem; }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; transition: all 0.3s ease; background: transparent; }
-        .nav.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-gray); padding: 0.75rem 2rem; box-shadow: var(--shadow-sm); }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-        .logo-icon { width: 42px; height: 42px; background: var(--gradient-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.25rem; }
-        .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text-dark); }
-        .logo-text span { color: var(--primary-coral); }
-        .nav-links { display: flex; align-items: center; gap: 2rem; }
-        .nav-link { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 500; color: var(--text-medium); text-decoration: none; transition: color 0.3s ease; }
-        .nav-link:hover { color: var(--primary-coral); }
-        .nav-cta { display: flex; gap: 0.75rem; }
-        .btn { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600; padding: 0.7rem 1.4rem; border-radius: 8px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .btn-outline { background: transparent; border: 1.5px solid var(--border-gray); color: var(--text-dark); }
-        .btn-outline:hover { border-color: var(--primary-teal); color: var(--primary-teal); background: rgba(13, 148, 136, 0.05); }
-        .btn-primary { background: var(--gradient-coral); color: white; box-shadow: var(--shadow-glow-coral); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -10px rgba(249, 115, 22, 0.4); }
-        .btn-teal { background: var(--gradient-teal); color: white; box-shadow: var(--shadow-glow-teal); }
-        .btn-teal:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -10px rgba(13, 148, 136, 0.4); }
-        .btn-lg { padding: 0.9rem 1.8rem; font-size: 1rem; }
-        .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.5rem; background: none; border: none; }
-        .mobile-toggle span { width: 22px; height: 2px; background: var(--text-dark); transition: all 0.3s ease; border-radius: 2px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 6rem; background: var(--gradient-subtle); overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%); border-radius: 50%; }
-        .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 70%); border-radius: 50%; }
-        .hero-container { max-width: 1300px; margin: 0 auto; width: 100%; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero-content { max-width: 600px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--primary-coral); margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease; }
-        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--primary-coral); border-radius: 50%; animation: pulse 2s ease infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease 0.1s both; }
-        .hero-subtitle { font-size: 1.15rem; color: var(--text-medium); margin-bottom: 2rem; animation: fadeInUp 0.6s ease 0.2s both; }
-        .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; animation: fadeInUp 0.6s ease 0.3s both; }
-        .hero-stats { display: flex; gap: 2.5rem; animation: fadeInUp 0.6s ease 0.4s both; }
-        .stat { text-align: left; }
-        .stat-value { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.25rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-        .stat-label { font-size: 0.85rem; color: var(--text-light); margin-top: 0.25rem; font-weight: 500; }
-        .hero-visual { position: relative; animation: fadeInUp 0.8s ease 0.3s both; }
-        .hero-card-stack { position: relative; height: 450px; }
-        .hero-card { position: absolute; background: var(--white); border: 1px solid var(--border-gray); border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-lg); transition: all 0.4s ease; }
-        .hero-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
-        .hero-card:nth-child(1) { top: 0; left: 10%; width: 280px; animation: cardFloat 5s ease-in-out infinite; }
-        .hero-card:nth-child(2) { top: 30%; right: 0; width: 260px; animation: cardFloat 5s ease-in-out 1.5s infinite; }
-        .hero-card:nth-child(3) { bottom: 0; left: 5%; width: 300px; animation: cardFloat 5s ease-in-out 3s infinite; }
-        @keyframes cardFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-        .card-icon.coral { background: rgba(249, 115, 22, 0.1); }
-        .card-icon.teal { background: rgba(13, 148, 136, 0.1); }
-        .card-icon.indigo { background: rgba(99, 102, 241, 0.1); }
-        .card-title { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
-        .card-value { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--text-dark); }
-        .card-chart { height: 60px; display: flex; align-items: flex-end; gap: 6px; margin-top: 0.75rem; }
-        .chart-bar { flex: 1; background: var(--gradient-teal); border-radius: 4px 4px 0 0; opacity: 0.8; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        section { position: relative; padding: 6rem 2rem; }
-        .section-container { max-width: 1300px; margin: 0 auto; }
-        .section-header { text-align: center; max-width: 650px; margin: 0 auto 4rem; }
-        .section-label { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-coral); margin-bottom: 0.75rem; }
-        .section-title { font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom: 1rem; }
-        .section-subtitle { font-size: 1.1rem; color: var(--text-medium); }
-        #products { background: var(--white); }
-        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        .product-card { background: var(--white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 2.5rem; transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-coral); opacity: 0; transition: opacity 0.3s ease; }
-        .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: transparent; }
-        .product-card:hover::before { opacity: 1; }
-        .product-card.featured { border-color: var(--primary-teal); box-shadow: var(--shadow-glow-teal); }
-        .product-card.featured::before { background: var(--gradient-teal); opacity: 1; }
-        .product-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--gradient-teal); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.7rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 50px; }
-        .product-icon { width: 60px; height: 60px; background: var(--light-gray); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1.5rem; }
-        .product-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
-        .product-card > p { color: var(--text-medium); margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .feature-list { list-style: none; margin-bottom: 2rem; }
-        .feature-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--light-gray); font-size: 0.95rem; }
-        .feature-list li:last-child { border-bottom: none; }
-        .feature-check { width: 20px; height: 20px; background: rgba(16, 185, 129, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-        .feature-check svg { width: 12px; height: 12px; color: var(--accent-emerald); }
-        #user-admin { background: var(--off-white); }
-        .feature-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .feature-content h3 { font-size: 1.75rem; margin-bottom: 1rem; }
-        .feature-content > p { color: var(--text-medium); font-size: 1.05rem; margin-bottom: 2rem; }
-        .feature-points { display: flex; flex-direction: column; gap: 1.25rem; }
-        .feature-point { display: flex; gap: 1rem; }
-        .feature-point-icon { width: 48px; height: 48px; background: rgba(249, 115, 22, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .feature-point-icon svg { width: 22px; height: 22px; color: var(--primary-coral); }
-        .feature-point-icon.teal { background: rgba(13, 148, 136, 0.1); }
-        .feature-point-icon.teal svg { color: var(--primary-teal); }
-        .feature-point-icon.amber { background: rgba(245, 158, 11, 0.1); }
-        .feature-point-icon.amber svg { color: var(--accent-amber); }
-        .feature-point h4 { font-size: 1.05rem; margin-bottom: 0.25rem; }
-        .feature-point p { color: var(--text-medium); font-size: 0.9rem; }
-        .chat-demo { background: var(--white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 1.5rem; box-shadow: var(--shadow-lg); }
-        .chat-header { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--light-gray); margin-bottom: 1rem; }
-        .chat-avatar { width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-        .chat-info h4 { font-size: 0.95rem; font-weight: 600; }
-        .chat-info span { font-size: 0.75rem; color: var(--accent-emerald); display: flex; align-items: center; gap: 0.25rem; font-weight: 500; }
-        .chat-info span::before { content: ''; width: 6px; height: 6px; background: var(--accent-emerald); border-radius: 50%; }
-        .chat-messages { display: flex; flex-direction: column; gap: 0.75rem; }
-        .chat-message { max-width: 85%; padding: 0.9rem 1.1rem; border-radius: 14px; font-size: 0.9rem; line-height: 1.5; }
-        .chat-message.user { background: var(--light-gray); align-self: flex-end; border-bottom-right-radius: 4px; color: var(--text-dark); }
-        .chat-message.bot { background: rgba(13, 148, 136, 0.08); border: 1px solid rgba(13, 148, 136, 0.15); align-self: flex-start; border-bottom-left-radius: 4px; }
-        .chat-message .success { color: var(--accent-emerald); font-weight: 600; }
-        .chat-message code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: rgba(0,0,0,0.06); padding: 0.15rem 0.4rem; border-radius: 4px; }
-        #syntasec { background: var(--white); }
-        .syntasec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
-        .syntasec-card { background: var(--white); border: 1px solid var(--border-gray); border-radius: 16px; padding: 1.75rem; transition: all 0.3s ease; position: relative; }
-        .syntasec-card:hover { border-color: var(--primary-teal); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .syntasec-card.new-feature { border-color: var(--accent-emerald); background: linear-gradient(135deg, rgba(16, 185, 129, 0.03) 0%, rgba(13, 148, 136, 0.03) 100%); }
-        .syntasec-card-badge { position: absolute; top: -8px; right: 1rem; background: var(--gradient-teal); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 50px; text-transform: uppercase; }
-        .syntasec-card-icon { width: 50px; height: 50px; background: rgba(13, 148, 136, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem; }
-        .syntasec-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--primary-teal); }
-        .syntasec-card p { color: var(--text-medium); font-size: 0.85rem; }
-        .comparison-box { background: var(--off-white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 3rem; }
-        .comparison-box h3 { text-align: center; font-size: 1.5rem; margin-bottom: 2.5rem; }
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .comparison-col h4 { font-size: 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-emerald); }
-        .comparison-col ul { list-style: none; }
-        .comparison-col li { padding: 0.6rem 0; color: var(--text-medium); border-bottom: 1px solid var(--border-gray); font-size: 0.95rem; }
-        .comparison-col li:last-child { border-bottom: none; }
-        #pricing { background: var(--off-white); }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
-        .pricing-card { background: var(--white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 2.5rem; transition: all 0.4s ease; position: relative; }
-        .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
-        .pricing-card.featured { border-color: var(--primary-coral); box-shadow: var(--shadow-glow-coral); }
-        .pricing-popular { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gradient-coral); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1.25rem; border-radius: 50px; }
-        .pricing-card h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
-        .pricing-card .subtitle { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .pricing-value { margin-bottom: 1.5rem; }
-        .pricing-value .amount { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.25rem; font-weight: 800; color: var(--primary-coral); }
-        .pricing-value .period { color: var(--text-light); font-size: 0.95rem; }
-        .pricing-features { list-style: none; margin-bottom: 2rem; }
-        .pricing-features li { display: flex; align-items: center; gap: 0.75rem; padding: 0.55rem 0; color: var(--text-medium); font-size: 0.9rem; }
-        .pricing-features li svg { width: 18px; height: 18px; color: var(--accent-emerald); flex-shrink: 0; }
-        .roi-section { background: var(--white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; }
-        .roi-section h3 { text-align: center; font-size: 1.5rem; margin-bottom: 2rem; }
-        .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
-        .roi-col h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .roi-col.before h4 { color: var(--accent-rose); }
-        .roi-col.after h4 { color: var(--accent-emerald); }
-        .roi-col ul { list-style: none; }
-        .roi-col li { padding: 0.5rem 0; color: var(--text-medium); font-size: 0.9rem; }
-        .roi-col li:last-child { font-weight: 600; padding-top: 0.75rem; margin-top: 0.5rem; border-top: 1px solid var(--border-gray); }
-        .roi-highlight { text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .value-item { text-align: center; padding: 1.5rem; }
-        .value-icon { font-size: 2.25rem; margin-bottom: 0.75rem; }
-        .value-item h4 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .value-item p { color: var(--text-medium); font-size: 0.9rem; }
-        #contact { background: var(--white); position: relative; }
-        .cta-container { max-width: 700px; margin: 0 auto; }
-        .cta-header { text-align: center; margin-bottom: 2.5rem; }
-        .cta-header h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); margin-bottom: 0.75rem; }
-        .cta-header p { font-size: 1.05rem; color: var(--text-medium); }
-        .contact-form { background: var(--off-white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 2.5rem; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-dark); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; background: var(--white); border: 1px solid var(--border-gray); border-radius: 10px; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: all 0.3s ease; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-coral); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
-        .form-group select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
-        .checkbox-group { display: flex; flex-direction: column; gap: 0.6rem; }
-        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-        .checkbox-item input { width: 18px; height: 18px; accent-color: var(--primary-coral); cursor: pointer; }
-        .checkbox-item span { color: var(--text-medium); font-size: 0.9rem; }
-        .form-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        .form-actions .btn { justify-content: center; width: 100%; }
-        .contact-info { text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-gray); }
-        .contact-info p { color: var(--text-medium); font-size: 0.9rem; }
-        .contact-info a { color: var(--primary-coral); text-decoration: none; font-weight: 600; }
-        .contact-info a:hover { text-decoration: underline; }
-        footer { background: var(--text-dark); color: var(--white); padding: 4rem 2rem 2rem; }
-        .footer-container { max-width: 1300px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-brand .logo-text { color: var(--white); }
-        .footer-brand .logo-text span { color: var(--primary-coral); }
-        .footer-brand p { color: rgba(255,255,255,0.7); margin: 1rem 0 1.5rem; max-width: 280px; font-size: 0.9rem; }
-        .footer-social { display: flex; gap: 0.75rem; }
-        .footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all 0.3s ease; }
-        .footer-social a:hover { background: var(--primary-coral); color: white; }
-        .footer-col h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--white); }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 0.6rem; }
-        .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
-        .footer-col a:hover { color: var(--primary-coral); }
-        .footer-bottom { padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
-        .footer-legal { display: flex; gap: 2rem; }
-        .footer-legal a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
-        .footer-legal a:hover { color: var(--primary-coral); }
-        .fade-in { opacity: 0; transform: translateY(25px); transition: all 0.7s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        #how-it-works { background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%); padding: 6rem 2rem; }
-        .platform-overview { max-width: 1200px; margin: 0 auto; }
-        .overview-image-container { position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl); cursor: pointer; margin-bottom: 3rem; border: 1px solid var(--border-gray); }
-        .overview-image { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
-        .overview-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30, 41, 59, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
-        .overview-image-container:hover .overview-overlay { opacity: 1; }
-        .overview-image-container:hover .overview-image { transform: scale(1.02); }
-        .overlay-content { text-align: center; color: white; }
-        .overlay-content svg { margin-bottom: 1rem; }
-        .overlay-content span { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 1.1rem; }
-        .overview-highlights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
-        .highlight-card { background: var(--white); border: 1px solid var(--border-gray); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; }
-        .highlight-card:hover { border-color: var(--primary-coral); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .highlight-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-        .highlight-card h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
-        .highlight-card p { font-size: 0.85rem; color: var(--text-medium); line-height: 1.5; }
-        .overview-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.95); z-index: 10000; padding: 2rem; overflow: auto; }
-        .lightbox.active { display: flex; align-items: center; justify-content: center; }
-        .lightbox-content { position: relative; max-width: 95vw; max-height: 95vh; }
-        .lightbox-content img { max-width: 100%; max-height: 85vh; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .lightbox-close { position: absolute; top: -50px; right: 0; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; padding: 0.5rem; line-height: 1; transition: color 0.3s ease; }
-        .lightbox-close:hover { color: var(--primary-coral); }
-        .lightbox-caption { text-align: center; color: white; margin-top: 1.5rem; }
-        .lightbox-caption h3 { font-size: 1.25rem; color: white; margin-bottom: 0.5rem; }
-        .lightbox-caption p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; }
-        #why-syntaai { background: var(--white); padding: 6rem 2rem; }
-        .advantages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
-        .advantage-card { background: var(--off-white); border: 1px solid var(--border-gray); border-radius: 16px; padding: 1.75rem; transition: all 0.3s ease; display: flex; gap: 1.25rem; }
-        .advantage-card:hover { border-color: var(--primary-teal); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .advantage-card.highlight { background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%); border-color: var(--primary-coral); }
-        .advantage-icon { font-size: 2rem; flex-shrink: 0; }
-        .advantage-content h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
-        .advantage-content p { font-size: 0.9rem; color: var(--text-medium); margin-bottom: 1rem; line-height: 1.6; }
-        .advantage-stat { display: flex; align-items: baseline; gap: 0.5rem; }
-        .advantage-stat .stat-number { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--primary-coral); }
-        .advantage-stat .stat-label { font-size: 0.8rem; color: var(--text-light); font-weight: 500; }
-        .comparison-banner { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; background: var(--off-white); border: 1px solid var(--border-gray); border-radius: 20px; padding: 2.5rem; margin-bottom: 4rem; }
-        .banner-content h3 { font-size: 1.1rem; margin-bottom: 1.25rem; color: var(--text-dark); }
-        .banner-content.syntaai h3 { color: var(--primary-teal); }
-        .comparison-items { display: flex; flex-direction: column; gap: 0.75rem; }
-        .compare-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; }
-        .compare-item .compare-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
-        .compare-item.negative .compare-icon { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); }
-        .compare-item.negative span:last-child { color: var(--text-medium); }
-        .compare-item.positive .compare-icon { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
-        .compare-item.positive span:last-child { color: var(--text-dark); font-weight: 500; }
-        .banner-divider { width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
-        .trust-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
-        .trust-item { text-align: center; padding: 1.5rem 1rem; }
-        .trust-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-        .trust-item h4 { font-size: 1rem; margin-bottom: 0.35rem; color: var(--text-dark); }
-        .trust-item p { font-size: 0.85rem; color: var(--text-medium); }
-        .why-cta { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(13, 148, 136, 0.05) 100%); border-radius: 16px; }
-        .why-cta p { font-size: 1.1rem; color: var(--text-medium); margin-bottom: 1.5rem; }
-        .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        @media (max-width: 1100px) { .hero-container { grid-template-columns: 1fr; text-align: center; } .hero-content { max-width: 100%; margin: 0 auto; } .hero-cta { justify-content: center; } .hero-stats { justify-content: center; } .hero-visual { display: none; } .syntasec-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 1024px) { .products-grid, .feature-showcase, .pricing-grid, .comparison-grid, .roi-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: repeat(2, 1fr); } .overview-highlights { grid-template-columns: repeat(2, 1fr); } .advantages-grid { grid-template-columns: repeat(2, 1fr); } .comparison-banner { grid-template-columns: 1fr; gap: 1.5rem; } .banner-divider { width: 50px; height: 50px; margin: 0 auto; } .trust-section { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 1.5rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border-gray); box-shadow: var(--shadow-lg); } .nav-cta { flex-direction: column; width: 100%; } .nav-cta .btn { width: 100%; justify-content: center; } .mobile-toggle { display: flex; } .hero { padding: 7rem 1.5rem 4rem; } .hero-stats { flex-direction: column; gap: 1.5rem; } section { padding: 4rem 1.5rem; } .syntasec-grid, .value-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; gap: 2rem; } .footer-bottom { flex-direction: column; text-align: center; } .overview-highlights { grid-template-columns: 1fr; } .advantages-grid { grid-template-columns: 1fr; } .advantage-card { flex-direction: column; text-align: center; } .advantage-stat { justify-content: center; } .trust-section { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; } .cta-buttons .btn { width: 100%; justify-content: center; } .overview-cta { flex-direction: column; } .overview-cta .btn { width: 100%; justify-content: center; } .lightbox { padding: 1rem; } .lightbox-close { top: -40px; font-size: 2rem; } }
+        :root{--white:#fff;--off-white:#fafbfc;--light-gray:#f1f5f9;--border-gray:#e2e8f0;--text-dark:#1e293b;--text-medium:#475569;--text-light:#64748b;--primary-coral:#f97316;--primary-teal:#0d9488;--accent-emerald:#10b981;--accent-rose:#f43f5e;--accent-amber:#f59e0b;--gradient-primary:linear-gradient(135deg,#f97316 0%,#0d9488 100%);--gradient-coral:linear-gradient(135deg,#f97316 0%,#fb923c 100%);--gradient-teal:linear-gradient(135deg,#0d9488 0%,#14b8a6 100%);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.08);--shadow-xl:0 20px 25px -5px rgba(0,0,0,0.08);--shadow-glow-coral:0 10px 40px -10px rgba(249,115,22,0.3);--shadow-glow-teal:0 10px 40px -10px rgba(13,148,136,0.3)}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,sans-serif;background:var(--white);color:var(--text-dark);line-height:1.6}
+        h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;line-height:1.2}
+        .gradient-text{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .new-badge{display:inline-flex;background:var(--gradient-teal);color:white;font-size:0.5rem;font-weight:700;padding:0.1rem 0.35rem;border-radius:50px;text-transform:uppercase;margin-left:0.3rem}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0.75rem 2rem;background:transparent;transition:all 0.3s}
+        .nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-gray)}
+        .nav-container{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none}
+        .logo-icon{width:36px;height:36px;background:var(--gradient-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.1rem}
+        .logo-text{font-size:1.3rem;font-weight:800;color:var(--text-dark)}.logo-text span{color:var(--primary-coral)}
+        .nav-links{display:flex;align-items:center;gap:1.5rem}
+        .nav-link{font-size:0.85rem;font-weight:500;color:var(--text-medium);text-decoration:none}.nav-link:hover{color:var(--primary-coral)}
+        .nav-cta{display:flex;gap:0.5rem}
+        .btn{font-size:0.85rem;font-weight:600;padding:0.6rem 1.2rem;border-radius:8px;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:0.4rem}
+        .btn-outline{background:transparent;border:1.5px solid var(--border-gray);color:var(--text-dark)}.btn-outline:hover{border-color:var(--primary-teal);color:var(--primary-teal)}
+        .btn-primary{background:var(--gradient-coral);color:white;box-shadow:var(--shadow-glow-coral)}.btn-primary:hover{transform:translateY(-2px)}
+        .btn-teal{background:var(--gradient-teal);color:white;box-shadow:var(--shadow-glow-teal)}.btn-teal:hover{transform:translateY(-2px)}
+        .btn-lg{padding:0.8rem 1.6rem;font-size:0.95rem}
+        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:0.5rem;background:none;border:none}
+        .mobile-toggle span{width:22px;height:2px;background:var(--text-dark);border-radius:2px}
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%);overflow:hidden}
+        .hero-container{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+        .hero-content{max-width:560px}
+        .hero-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);padding:0.4rem 0.9rem;border-radius:50px;font-size:0.8rem;font-weight:500;color:var(--primary-coral);margin-bottom:1.25rem}
+        .hero h1{font-size:clamp(2.2rem,4.5vw,3.25rem);margin-bottom:1.25rem}
+        .hero-subtitle{font-size:1.05rem;color:var(--text-medium);margin-bottom:1.75rem}
+        .hero-cta{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:2.5rem}
+        .hero-stats{display:flex;gap:2rem}
+        .stat-value{font-size:2rem;font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .stat-label{font-size:0.8rem;color:var(--text-light);margin-top:0.2rem}
+        .hero-visual{position:relative}.hero-card-stack{position:relative;height:400px}
+        .hero-card{position:absolute;background:var(--white);border:1px solid var(--border-gray);border-radius:14px;padding:1.25rem;box-shadow:var(--shadow-lg)}
+        .hero-card:nth-child(1){top:0;left:10%;width:260px}.hero-card:nth-child(2){top:28%;right:0;width:240px}.hero-card:nth-child(3){bottom:0;left:5%;width:280px}
+        .card-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem}
+        .card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+        .card-icon.coral{background:rgba(249,115,22,0.1)}.card-icon.teal{background:rgba(13,148,136,0.1)}.card-icon.indigo{background:rgba(99,102,241,0.1)}
+        .card-title{font-size:0.8rem;color:var(--text-light)}
+        .card-value{font-size:1.5rem;font-weight:700}
+        .card-chart{height:50px;display:flex;align-items:flex-end;gap:5px;margin-top:0.6rem}
+        .chart-bar{flex:1;background:var(--gradient-teal);border-radius:3px 3px 0 0;opacity:0.8}
+        section{position:relative;padding:5rem 2rem}
+        .section-container{max-width:1300px;margin:0 auto}
+        .section-header{text-align:center;max-width:600px;margin:0 auto 3rem}
+        .section-label{display:inline-block;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary-coral);margin-bottom:0.6rem}
+        .section-title{font-size:clamp(1.6rem,3vw,2.25rem);margin-bottom:0.75rem}
+        .section-subtitle{font-size:1rem;color:var(--text-medium)}
+        #platform-overview{background:linear-gradient(180deg,var(--off-white) 0%,var(--white) 100%)}
+        .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+        .platform-column h3{font-size:1.35rem;margin-bottom:1.5rem;color:var(--primary-teal);display:flex;align-items:center;gap:0.5rem}
+        .platform-column h3 svg{width:24px;height:24px}
+        .module-card,.benefit-card{display:flex;gap:1rem;padding:1.25rem;background:var(--white);border:1px solid var(--border-gray);border-radius:12px;margin-bottom:1rem;transition:all 0.3s}
+        .module-card:hover{border-color:var(--primary-teal);transform:translateX(4px)}
+        .benefit-card:hover{border-color:var(--primary-coral);transform:translateX(4px)}
+        .module-icon,.benefit-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .module-icon{background:rgba(13,148,136,0.1)}.module-icon svg{width:24px;height:24px;color:var(--primary-teal)}
+        .benefit-icon{background:rgba(249,115,22,0.1)}.benefit-icon svg{width:24px;height:24px;color:var(--primary-coral)}
+        .module-content h4,.benefit-content h4{font-size:0.95rem;margin-bottom:0.3rem}
+        .module-content p,.benefit-content p{font-size:0.85rem;color:var(--text-medium);line-height:1.5}
+        .executive-summary{background:var(--gradient-teal);color:white;padding:1.5rem 2rem;border-radius:12px;margin-top:2rem}
+        .executive-summary h4{color:white;font-size:1rem;margin-bottom:0.5rem}
+        .executive-summary p{font-size:0.9rem;opacity:0.95;line-height:1.6}
+        #products{background:var(--white)}
+        .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+        .product-card{background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:2rem;transition:all 0.4s;position:relative;overflow:hidden}
+        .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}
+        .product-card.featured{border-color:var(--primary-teal);box-shadow:var(--shadow-glow-teal)}
+        .product-badge{position:absolute;top:1.25rem;right:1.25rem;background:var(--gradient-teal);color:white;font-size:0.65rem;font-weight:700;padding:0.3rem 0.6rem;border-radius:50px}
+        .product-icon{width:52px;height:52px;background:var(--light-gray);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem}
+        .product-card h3{font-size:1.25rem;margin-bottom:0.6rem}
+        .product-card>p{color:var(--text-medium);margin-bottom:1.25rem;font-size:0.9rem}
+        .feature-list{list-style:none;margin-bottom:1.5rem}
+        .feature-list li{display:flex;align-items:flex-start;gap:0.6rem;padding:0.5rem 0;border-bottom:1px solid var(--light-gray);font-size:0.88rem}
+        .feature-list li:last-child{border-bottom:none}
+        .feature-check{width:18px;height:18px;background:rgba(16,185,129,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+        .feature-check svg{width:10px;height:10px;color:var(--accent-emerald)}
+        #syntasec{background:var(--off-white)}
+        .syntasec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:3rem}
+        .syntasec-card{background:var(--white);border:1px solid var(--border-gray);border-radius:14px;padding:1.5rem;transition:all 0.3s;position:relative}
+        .syntasec-card:hover{border-color:var(--primary-teal);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+        .syntasec-card.new-feature{border-color:var(--accent-emerald);background:linear-gradient(135deg,rgba(16,185,129,0.03) 0%,rgba(13,148,136,0.03) 100%)}
+        .syntasec-card-badge{position:absolute;top:-7px;right:1rem;background:var(--gradient-teal);color:white;font-size:0.55rem;font-weight:700;padding:0.15rem 0.4rem;border-radius:50px;text-transform:uppercase}
+        .syntasec-card-icon{width:44px;height:44px;background:rgba(13,148,136,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
+        .syntasec-card h3{font-size:0.95rem;margin-bottom:0.4rem;color:var(--primary-teal)}
+        .syntasec-card p{color:var(--text-medium);font-size:0.8rem}
+        .comparison-box{background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:2.5rem}
+        .comparison-box h3{text-align:center;font-size:1.35rem;margin-bottom:2rem}
+        .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+        .comparison-col h4{font-size:0.95rem;margin-bottom:1rem;display:flex;align-items:center;gap:0.4rem;color:var(--accent-emerald)}
+        .comparison-col ul{list-style:none}
+        .comparison-col li{padding:0.5rem 0;color:var(--text-medium);border-bottom:1px solid var(--border-gray);font-size:0.88rem}
+        .comparison-col li:last-child{border-bottom:none}
+        #why-syntaai{background:var(--white);padding:5rem 2rem}
+        .advantages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem}
+        .advantage-card{background:var(--off-white);border:1px solid var(--border-gray);border-radius:14px;padding:1.5rem;transition:all 0.3s;display:flex;gap:1rem}
+        .advantage-card:hover{border-color:var(--primary-teal);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+        .advantage-card.highlight{background:linear-gradient(135deg,rgba(249,115,22,0.08) 0%,rgba(13,148,136,0.08) 100%);border-color:var(--primary-coral)}
+        .advantage-icon{font-size:1.75rem;flex-shrink:0}
+        .advantage-content h3{font-size:1rem;margin-bottom:0.4rem}
+        .advantage-content p{font-size:0.85rem;color:var(--text-medium);margin-bottom:0.75rem;line-height:1.5}
+        .advantage-stat{display:flex;align-items:baseline;gap:0.4rem}
+        .advantage-stat .stat-number{font-size:1.35rem;font-weight:800;color:var(--primary-coral)}
+        .advantage-stat .stat-label{font-size:0.75rem;color:var(--text-light)}
+        .comparison-banner{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;background:var(--off-white);border:1px solid var(--border-gray);border-radius:16px;padding:2rem;margin-bottom:3rem}
+        .banner-content h3{font-size:1rem;margin-bottom:1rem}.banner-content.syntaai h3{color:var(--primary-teal)}
+        .comparison-items{display:flex;flex-direction:column;gap:0.6rem}
+        .compare-item{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem}
+        .compare-item .compare-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0}
+        .compare-item.negative .compare-icon{background:rgba(244,63,94,0.15);color:var(--accent-rose)}
+        .compare-item.positive .compare-icon{background:rgba(16,185,129,0.15);color:var(--accent-emerald)}
+        .compare-item.positive span:last-child{font-weight:500}
+        .banner-divider{width:50px;height:50px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:0.8rem;flex-shrink:0}
+        .trust-section{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:2.5rem}
+        .trust-item{text-align:center;padding:1.25rem 1rem}
+        .trust-icon{font-size:1.75rem;margin-bottom:0.6rem}
+        .trust-item h4{font-size:0.95rem;margin-bottom:0.3rem}
+        .trust-item p{font-size:0.8rem;color:var(--text-medium)}
+        .why-cta{text-align:center;padding:1.75rem;background:linear-gradient(135deg,rgba(249,115,22,0.05) 0%,rgba(13,148,136,0.05) 100%);border-radius:14px}
+        .why-cta p{font-size:1rem;color:var(--text-medium);margin-bottom:1.25rem}
+        .cta-buttons{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+        #how-it-works{background:linear-gradient(180deg,var(--white) 0%,var(--off-white) 100%)}
+        .platform-demo{max-width:1100px;margin:0 auto}
+        .overview-image-container{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-xl);cursor:pointer;margin-bottom:2.5rem;border:1px solid var(--border-gray)}
+        .overview-image{width:100%;height:auto;display:block;transition:transform 0.5s}
+        .overview-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(30,41,59,0.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s}
+        .overview-image-container:hover .overview-overlay{opacity:1}
+        .overview-image-container:hover .overview-image{transform:scale(1.02)}
+        .overlay-content{text-align:center;color:white}
+        .overlay-content svg{margin-bottom:0.75rem}
+        .overlay-content span{display:block;font-weight:600;font-size:1rem}
+        .overview-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:2rem}
+        .highlight-card{background:var(--white);border:1px solid var(--border-gray);border-radius:14px;padding:1.25rem;text-align:center;transition:all 0.3s}
+        .highlight-card:hover{border-color:var(--primary-coral);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+        .highlight-icon{font-size:1.75rem;margin-bottom:0.6rem}
+        .highlight-card h4{font-size:0.95rem;margin-bottom:0.4rem}
+        .highlight-card p{font-size:0.8rem;color:var(--text-medium);line-height:1.4}
+        .overview-cta{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+        .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:10000;padding:2rem;overflow:auto}
+        .lightbox.active{display:flex;align-items:center;justify-content:center}
+        .lightbox-content{position:relative;max-width:95vw;max-height:95vh}
+        .lightbox-content img{max-width:100%;max-height:85vh;border-radius:10px}
+        .lightbox-close{position:absolute;top:-45px;right:0;background:none;border:none;color:white;font-size:2.25rem;cursor:pointer}
+        .lightbox-close:hover{color:var(--primary-coral)}
+        .lightbox-caption{text-align:center;color:white;margin-top:1.25rem}
+        .lightbox-caption h3{font-size:1.1rem;color:white;margin-bottom:0.4rem}
+        .lightbox-caption p{color:rgba(255,255,255,0.7);font-size:0.9rem}
+        #user-admin{background:var(--white)}
+        .feature-showcase{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+        .feature-content h3{font-size:1.5rem;margin-bottom:0.75rem}
+        .feature-content>p{color:var(--text-medium);font-size:0.95rem;margin-bottom:1.5rem}
+        .feature-points{display:flex;flex-direction:column;gap:1rem}
+        .feature-point{display:flex;gap:0.75rem}
+        .feature-point-icon{width:42px;height:42px;background:rgba(249,115,22,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .feature-point-icon svg{width:20px;height:20px;color:var(--primary-coral)}
+        .feature-point-icon.teal{background:rgba(13,148,136,0.1)}.feature-point-icon.teal svg{color:var(--primary-teal)}
+        .feature-point-icon.amber{background:rgba(245,158,11,0.1)}.feature-point-icon.amber svg{color:var(--accent-amber)}
+        .feature-point h4{font-size:0.95rem;margin-bottom:0.2rem}
+        .feature-point p{color:var(--text-medium);font-size:0.85rem}
+        .chat-demo{background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:1.25rem;box-shadow:var(--shadow-lg)}
+        .chat-header{display:flex;align-items:center;gap:0.6rem;padding-bottom:0.75rem;border-bottom:1px solid var(--light-gray);margin-bottom:0.75rem}
+        .chat-avatar{width:36px;height:36px;background:var(--gradient-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+        .chat-info h4{font-size:0.9rem;font-weight:600}
+        .chat-info span{font-size:0.7rem;color:var(--accent-emerald);display:flex;align-items:center;gap:0.2rem}
+        .chat-info span::before{content:'';width:5px;height:5px;background:var(--accent-emerald);border-radius:50%}
+        .chat-messages{display:flex;flex-direction:column;gap:0.6rem}
+        .chat-message{max-width:85%;padding:0.75rem 1rem;border-radius:12px;font-size:0.85rem;line-height:1.45}
+        .chat-message.user{background:var(--light-gray);align-self:flex-end;border-bottom-right-radius:3px}
+        .chat-message.bot{background:rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.15);align-self:flex-start;border-bottom-left-radius:3px}
+        .chat-message .success{color:var(--accent-emerald);font-weight:600}
+        .chat-message code{font-family:'JetBrains Mono',monospace;font-size:0.75rem;background:rgba(0,0,0,0.06);padding:0.1rem 0.35rem;border-radius:3px}
+        #pricing{background:var(--off-white)}
+        .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem}
+        .pricing-card{background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:2rem;transition:all 0.4s;position:relative}
+        .pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}
+        .pricing-card.featured{border-color:var(--primary-coral);box-shadow:var(--shadow-glow-coral)}
+        .pricing-popular{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gradient-coral);color:white;font-size:0.7rem;font-weight:700;padding:0.35rem 1rem;border-radius:50px}
+        .pricing-card h3{font-size:1.2rem;margin-bottom:0.4rem}
+        .pricing-card .subtitle{color:var(--text-light);font-size:0.85rem;margin-bottom:1.25rem}
+        .pricing-value{margin-bottom:1.25rem}
+        .pricing-value .amount{font-size:2rem;font-weight:800;color:var(--primary-coral)}
+        .pricing-value .period{color:var(--text-light);font-size:0.9rem}
+        .pricing-features{list-style:none;margin-bottom:1.5rem}
+        .pricing-features li{display:flex;align-items:center;gap:0.6rem;padding:0.45rem 0;color:var(--text-medium);font-size:0.85rem}
+        .pricing-features li svg{width:16px;height:16px;color:var(--accent-emerald);flex-shrink:0}
+        .roi-section{background:var(--white);border:1px solid var(--border-gray);border-radius:16px;padding:2rem;margin-bottom:2.5rem}
+        .roi-section h3{text-align:center;font-size:1.35rem;margin-bottom:1.75rem}
+        .roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:1.5rem}
+        .roi-col h4{font-size:0.95rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem}
+        .roi-col.before h4{color:var(--accent-rose)}.roi-col.after h4{color:var(--accent-emerald)}
+        .roi-col ul{list-style:none}
+        .roi-col li{padding:0.4rem 0;color:var(--text-medium);font-size:0.85rem}
+        .roi-col li:last-child{font-weight:600;padding-top:0.6rem;margin-top:0.4rem;border-top:1px solid var(--border-gray)}
+        .roi-highlight{text-align:center;font-size:1.5rem;font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .value-item{text-align:center;padding:1.25rem}
+        .value-icon{font-size:2rem;margin-bottom:0.6rem}
+        .value-item h4{font-size:0.95rem;margin-bottom:0.4rem}
+        .value-item p{color:var(--text-medium);font-size:0.85rem}
+        #contact{background:var(--white)}
+        .cta-container{max-width:650px;margin:0 auto}
+        .cta-header{text-align:center;margin-bottom:2rem}
+        .cta-header h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:0.6rem}
+        .cta-header p{font-size:0.95rem;color:var(--text-medium)}
+        .contact-form{background:var(--off-white);border:1px solid var(--border-gray);border-radius:16px;padding:2rem}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+        .form-group{margin-bottom:1rem}
+        .form-group label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:0.4rem}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:0.75rem 0.9rem;background:var(--white);border:1px solid var(--border-gray);border-radius:8px;font-size:0.9rem;transition:all 0.3s}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary-coral);box-shadow:0 0 0 3px rgba(249,115,22,0.1)}
+        .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.9rem center}
+        .checkbox-group{display:flex;flex-direction:column;gap:0.5rem}
+        .checkbox-item{display:flex;align-items:center;gap:0.6rem;cursor:pointer}
+        .checkbox-item input{width:16px;height:16px;accent-color:var(--primary-coral);cursor:pointer}
+        .checkbox-item span{color:var(--text-medium);font-size:0.85rem}
+        .form-actions{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem}
+        .form-actions .btn{justify-content:center;width:100%}
+        .contact-info{text-align:center;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border-gray)}
+        .contact-info p{color:var(--text-medium);font-size:0.85rem}
+        .contact-info a{color:var(--primary-coral);text-decoration:none;font-weight:600}
+        .contact-info a:hover{text-decoration:underline}
+        footer{background:var(--text-dark);color:var(--white);padding:3.5rem 2rem 1.5rem}
+        .footer-container{max-width:1300px;margin:0 auto}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+        .footer-brand .logo-text{color:var(--white)}.footer-brand .logo-text span{color:var(--primary-coral)}
+        .footer-brand p{color:rgba(255,255,255,0.7);margin:0.75rem 0 1.25rem;max-width:260px;font-size:0.85rem}
+        .footer-social{display:flex;gap:0.6rem}
+        .footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.1);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);transition:all 0.3s}
+        .footer-social a:hover{background:var(--primary-coral);color:white}
+        .footer-col h4{font-size:0.85rem;font-weight:700;margin-bottom:1rem;color:var(--white)}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:0.5rem}
+        .footer-col a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+        .footer-col a:hover{color:var(--primary-coral)}
+        .footer-bottom{padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem}
+        .footer-bottom p{color:rgba(255,255,255,0.6);font-size:0.8rem}
+        .footer-legal{display:flex;gap:1.5rem}
+        .footer-legal a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.8rem;transition:color 0.3s}
+        .footer-legal a:hover{color:var(--primary-coral)}
+        .fade-in{opacity:0;transform:translateY(20px);transition:all 0.6s}.fade-in.visible{opacity:1;transform:translateY(0)}
+        @media(max-width:1100px){.hero-container{grid-template-columns:1fr;text-align:center}.hero-content{max-width:100%;margin:0 auto}.hero-cta{justify-content:center}.hero-stats{justify-content:center}.hero-visual{display:none}.syntasec-grid{grid-template-columns:repeat(2,1fr)}.platform-grid{grid-template-columns:1fr}}
+        @media(max-width:1024px){.products-grid,.feature-showcase,.pricing-grid,.comparison-grid,.roi-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}.overview-highlights{grid-template-columns:repeat(2,1fr)}.advantages-grid{grid-template-columns:repeat(2,1fr)}.comparison-banner{grid-template-columns:1fr;gap:1.25rem}.banner-divider{width:45px;height:45px;margin:0 auto}.trust-section{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.nav-links{display:none}.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--white);padding:1.25rem 2rem;gap:0.75rem;border-bottom:1px solid var(--border-gray);box-shadow:var(--shadow-lg)}.nav-cta{flex-direction:column;width:100%}.nav-cta .btn{width:100%;justify-content:center}.mobile-toggle{display:flex}.hero{padding:6rem 1.5rem 3.5rem}.hero-stats{flex-direction:column;gap:1.25rem}section{padding:3.5rem 1.5rem}.syntasec-grid,.value-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:1.5rem}.footer-bottom{flex-direction:column;text-align:center}.overview-highlights{grid-template-columns:1fr}.advantages-grid{grid-template-columns:1fr}.advantage-card{flex-direction:column;text-align:center}.advantage-stat{justify-content:center}.trust-section{grid-template-columns:1fr}.cta-buttons{flex-direction:column}.cta-buttons .btn{width:100%;justify-content:center}.overview-cta{flex-direction:column}.overview-cta .btn{width:100%;justify-content:center}.lightbox{padding:1rem}.lightbox-close{top:-35px;font-size:1.75rem}}
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">S</div>
-                <span class="logo-text">Synta<span>AI</span></span>
-            </a>
+            <a href="#" class="logo"><div class="logo-icon">S</div><span class="logo-text">Synta<span>AI</span></span></a>
             <div class="nav-links" id="navLinks">
                 <a href="#products" class="nav-link">Products</a>
-                <a href="#user-admin" class="nav-link">User Admin</a>
                 <a href="#syntasec" class="nav-link">Syntasec</a>
                 <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="#why-syntaai" class="nav-link">Why Us</a>
                 <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#user-admin" class="nav-link">User Admin</a>
                 <div class="nav-cta">
-                    <a href="https://demo.syntaai.com" class="btn btn-outline" target="_blank">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        Try Demo
-                    </a>
+                    <a href="https://demo.syntaai.com" class="btn btn-outline" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Try Demo</a>
                     <a href="#contact" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
@@ -325,33 +274,25 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge"><span>AI-Powered SAP Security Platform</span></div>
                 <h1>Complete <span class="gradient-text">SAP Security</span> Automation Platform</h1>
-                <p class="hero-subtitle">From automating SAP user lifecycle management to protecting your systems with advanced AI security analysis – enterprise-grade protection at 70% lower cost.</p>
+                <p class="hero-subtitle">From automating SAP user lifecycle to protecting systems with AI security analysis – enterprise-grade protection at 70% lower cost.</p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn btn-primary btn-lg">Schedule Demo</a>
-                    <a href="https://demo.syntaai.com" class="btn btn-teal btn-lg" target="_blank">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        Live Demo
-                    </a>
+                    <a href="https://demo.syntaai.com" class="btn btn-teal btn-lg" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Live Demo</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat"><div class="stat-value">70%</div><div class="stat-label">Cost Reduction</div></div>
-                    <div class="stat"><div class="stat-value">40+</div><div class="stat-label">Use Cases</div></div>
-                    <div class="stat"><div class="stat-value">95%</div><div class="stat-label">Detection Rate</div></div>
+                    <div class="stat"><div class="stat-value">60%</div><div class="stat-label">Faster Remediation</div></div>
+                    <div class="stat"><div class="stat-value">80%+</div><div class="stat-label">Tasks Automated</div></div>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-card-stack">
-                    <div class="hero-card">
-                        <div class="card-header"><div class="card-icon coral">🔒</div><div class="card-title">Vulnerabilities Found</div></div>
-                        <div class="card-value">247</div>
-                        <div class="card-chart"><div class="chart-bar" style="height: 40%;"></div><div class="chart-bar" style="height: 60%;"></div><div class="chart-bar" style="height: 35%;"></div><div class="chart-bar" style="height: 80%;"></div><div class="chart-bar" style="height: 55%;"></div><div class="chart-bar" style="height: 90%;"></div><div class="chart-bar" style="height: 70%;"></div></div>
-                    </div>
+                    <div class="hero-card"><div class="card-header"><div class="card-icon coral">🔒</div><div class="card-title">Vulnerabilities Found</div></div><div class="card-value">247</div><div class="card-chart"><div class="chart-bar" style="height:40%"></div><div class="chart-bar" style="height:60%"></div><div class="chart-bar" style="height:35%"></div><div class="chart-bar" style="height:80%"></div><div class="chart-bar" style="height:55%"></div><div class="chart-bar" style="height:90%"></div><div class="chart-bar" style="height:70%"></div></div></div>
                     <div class="hero-card"><div class="card-header"><div class="card-icon teal">👥</div><div class="card-title">Users Managed</div></div><div class="card-value">12,450</div></div>
                     <div class="hero-card"><div class="card-header"><div class="card-icon indigo">✅</div><div class="card-title">Compliance Score</div></div><div class="card-value">98%</div></div>
                 </div>
@@ -359,340 +300,176 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    <section id="platform-overview">
+        <div class="section-container">
+            <div class="section-header fade-in"><span class="section-label">Syntasec Platform</span><h2 class="section-title">The AI-Powered SAP Security Platform</h2><p class="section-subtitle">Comprehensive modules and measurable business benefits</p></div>
+            <div class="platform-grid fade-in">
+                <div class="platform-column">
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>Platform Modules</h3>
+                    <div class="module-card"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div class="module-content"><h4>Vulnerability Management</h4><p>Comprehensive scanning, AI-powered analysis, and guided Remediation Journeys for your entire SAP landscape.</p></div></div>
+                    <div class="module-card"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div><div class="module-content"><h4>Patch Intelligence</h4><p>AI-driven recommendations and end-to-end lifecycle management for SAP Security Notes with maintenance scheduling.</p></div></div>
+                    <div class="module-card"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 12l4-4"/></svg></div><div class="module-content"><h4>AI-Powered Automation</h4><p>Customizable workflow engine with three AI modes (Rule-Based, Cloud, Local) and proactive AI Quick Wins.</p></div></div>
+                    <div class="module-card"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div class="module-content"><h4>Unified Security Interface</h4><p>Central web dashboard with deep analytics, complemented by conversational AI via Teams/Web for rapid tasks.</p></div></div>
+                </div>
+                <div class="platform-column">
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Platform Benefits</h3>
+                    <div class="benefit-card"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="benefit-content"><h4>Accelerate Remediation</h4><p>Reduce vulnerability remediation time by up to 60% with AI-guided analysis and prioritized patch plans.</p></div></div>
+                    <div class="benefit-card"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><div class="benefit-content"><h4>Increase Productivity</h4><p>Automate over 80% of routine security tasks like password resets and account unlocks.</p></div></div>
+                    <div class="benefit-card"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2"/><path d="M12 21v2"/></svg></div><div class="benefit-content"><h4>Gain Centralized Visibility</h4><p>Real-time, unified view of security posture, vulnerability trends, and patch compliance across all SAP systems.</p></div></div>
+                    <div class="benefit-card"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="benefit-content"><h4>Enterprise-Grade Security</h4><p>Implement granular 5-tier RBAC and maintain full audit trail for every action.</p></div></div>
+                </div>
+            </div>
+            <div class="executive-summary fade-in"><h4>Executive Summary</h4><p>Syntasec is an intelligent security platform that automates SAP vulnerability management and security operations. It combines comprehensive scanning, AI-powered analysis, and guided remediation workflows to deliver enterprise-grade protection at 70% lower cost than traditional solutions.</p></div>
+        </div>
+    </section>
+
     <section id="products">
         <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Our Solutions</span>
-                <h2 class="section-title">Two Powerful Security Solutions, One Platform</h2>
-                <p class="section-subtitle">Complete SAP security automation — from user management to vulnerability protection</p>
-            </div>
+            <div class="section-header fade-in"><span class="section-label">Our Solutions</span><h2 class="section-title">Two Powerful Solutions, One Platform</h2><p class="section-subtitle">Complete SAP security automation — from vulnerability protection to user management</p></div>
             <div class="products-grid">
-                <div class="product-card fade-in">
-                    <div class="product-icon">👥</div>
-                    <h3>SAP User Administration</h3>
-                    <p>Automate SAP user lifecycle management with intelligent chatbot-driven workflows for security administrators.</p>
-                    <ul class="feature-list">
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>User Provisioning & Deprovisioning</strong> — Automated user lifecycle management</span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Self-Service Portal</strong> — Password resets, account unlocks, access requests</span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>MS Teams Integration</strong> — Native bot with identity-aware self-service<span class="new-badge">NEW</span></span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Approvers Workflow</strong> — Manager approvals via Teams<span class="new-badge">NEW</span></span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>GRC Integration</strong> — Automated compliance workflows</span></li>
-                    </ul>
-                    <a href="#user-admin" class="btn btn-primary">Learn More →</a>
-                </div>
-                <div class="product-card featured fade-in">
-                    <span class="product-badge">ENHANCED ✨</span>
-                    <div class="product-icon">🛡️</div>
-                    <h3>Syntasec Security Platform</h3>
-                    <p>AI-powered SAP vulnerability scanning and patch management that transforms complex data into actionable business intelligence.</p>
-                    <ul class="feature-list">
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>AI Business Impact Analysis</strong> — Real business risk, not just CVE numbers</span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>SAP Security Notes</strong> — Automated monitoring & patch tracking<span class="new-badge">NEW</span></span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Remediation Plans</strong> — AI-generated phased deployment strategies<span class="new-badge">NEW</span></span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>21+ Security Controls</strong> — Pre-built rules plus custom checks</span></li>
-                        <li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>SAP RISE Ready</strong> — Built for modern cloud deployments</span></li>
-                    </ul>
-                    <a href="#syntasec" class="btn btn-teal">Discover Syntasec →</a>
-                </div>
+                <div class="product-card featured fade-in"><span class="product-badge">PRIMARY ✨</span><div class="product-icon">🛡️</div><h3>Syntasec Security Platform</h3><p>AI-powered SAP vulnerability scanning and patch management.</p><ul class="feature-list"><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>AI Business Impact Analysis</strong> — Real business risk</span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>SAP Security Notes</strong> — Automated monitoring<span class="new-badge">NEW</span></span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Remediation Plans</strong> — AI-generated phased deployment<span class="new-badge">NEW</span></span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>21+ Security Controls</strong> — Pre-built + custom</span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>SAP RISE Ready</strong> — Cloud deployments</span></li></ul><a href="#syntasec" class="btn btn-teal">Discover Syntasec →</a></div>
+                <div class="product-card fade-in"><div class="product-icon">👥</div><h3>SAP User Administration</h3><p>Automate SAP user lifecycle with chatbot-driven workflows.</p><ul class="feature-list"><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>User Provisioning</strong> — Automated lifecycle</span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Self-Service Portal</strong> — Password resets</span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>MS Teams Integration</strong> — Native bot<span class="new-badge">NEW</span></span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>Approvers Workflow</strong> — Manager approvals<span class="new-badge">NEW</span></span></li><li><span class="feature-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span><strong>GRC Integration</strong> — Compliance</span></li></ul><a href="#user-admin" class="btn btn-primary">Learn More →</a></div>
             </div>
         </div>
     </section>
 
-    <!-- User Admin Details -->
+    <section id="syntasec">
+        <div class="section-container">
+            <div class="section-header fade-in"><span class="section-label">Syntasec Platform</span><h2 class="section-title">AI-Powered SAP Vulnerability Management</h2><p class="section-subtitle">AI analyzes business impact and generates strategic remediation plans</p></div>
+            <div class="syntasec-grid">
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">🤖</div><h3>Hybrid AI Architecture</h3><p>Rule-based, cloud AI, or local AI analysis.</p></div>
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">⚡</div><h3>Real-Time Detection</h3><p>Scanning for 10+ vulnerability types.</p></div>
+                <div class="syntasec-card new-feature fade-in"><span class="syntasec-card-badge">NEW</span><div class="syntasec-card-icon">📋</div><h3>SAP Security Notes</h3><p>Monitoring, tracking & scheduling.</p></div>
+                <div class="syntasec-card new-feature fade-in"><span class="syntasec-card-badge">NEW</span><div class="syntasec-card-icon">🎯</div><h3>Remediation Plans</h3><p>AI-generated phased plans.</p></div>
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">⚙️</div><h3>21+ Security Controls</h3><p>Pre-built + custom checks.</p></div>
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">📊</div><h3>Smart Dashboard</h3><p>Stats, trends & export.</p></div>
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">🔧</div><h3>Patch Management</h3><p>Track, schedule & deploy.</p></div>
+                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">☁️</div><h3>SAP RISE Ready</h3><p>Cloud & hybrid deployments.</p></div>
+            </div>
+            <div class="comparison-box fade-in"><h3>Why Choose Syntasec?</h3><div class="comparison-grid"><div class="comparison-col"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>AI-Powered Intelligence</h4><ul><li>• Business impact analysis</li><li>• AI-generated remediation roadmaps</li><li>• SAP Security Notes monitoring</li><li>• Conversational chatbot interface</li><li>• Phased patch deployment</li></ul></div><div class="comparison-col"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Enterprise Features, Mid-Market Price</h4><ul><li>• Complete vulnerability management</li><li>• Implementation in days</li><li>• Intuitive interface</li><li>• Configurable security controls</li><li>• SAP RISE ready</li></ul></div></div></div>
+        </div>
+    </section>
+    <section id="how-it-works">
+        <div class="section-container">
+            <div class="section-header fade-in"><span class="section-label">Platform Overview</span><h2 class="section-title">See How SyntaAI Works</h2><p class="section-subtitle">Comprehensive look at our AI-powered SAP security platform</p></div>
+            <div class="platform-demo fade-in">
+                <div class="overview-image-container" onclick="openLightbox()"><img src="platform-overview.png" alt="SyntaAI Platform Overview" class="overview-image"><div class="overview-overlay"><div class="overlay-content"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg><span>Click to View Full Size</span></div></div></div>
+                <div class="overview-highlights"><div class="highlight-card"><div class="highlight-icon">🔍</div><h4>Syntasec Dashboard</h4><p>Central security & vulnerability management</p></div><div class="highlight-card"><div class="highlight-icon">🤖</div><h4>Conversational AI</h4><p>MS Teams bot & web chatbot</p></div><div class="highlight-card"><div class="highlight-icon">📊</div><h4>Real-Time Analytics</h4><p>Trends & risk scoring</p></div><div class="highlight-card"><div class="highlight-icon">⚡</div><h4>Automated Operations</h4><p>Self-service & GRC submissions</p></div></div>
+                <div class="overview-cta"><button class="btn btn-primary btn-lg" onclick="openLightbox()">View Full Platform Overview</button><a href="#contact" class="btn btn-teal btn-lg">Schedule a Demo</a></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)"><div class="lightbox-content"><button class="lightbox-close" onclick="closeLightbox(event)">&times;</button><img src="platform-overview.png" alt="SyntaAI Platform Overview"><div class="lightbox-caption"><h3>SyntaAI: The AI-Powered SAP Security Platform</h3><p>Syntasec Dashboard & Conversational Automation</p></div></div></div>
+
+    <section id="why-syntaai">
+        <div class="section-container">
+            <div class="section-header fade-in"><span class="section-label">Why SyntaAI</span><h2 class="section-title">The Smarter Choice for SAP Security</h2><p class="section-subtitle">Enterprise-grade protection without enterprise price tag</p></div>
+            <div class="advantages-grid fade-in">
+                <div class="advantage-card highlight"><div class="advantage-icon">💰</div><div class="advantage-content"><h3>70% Lower Cost</h3><p>Starting at <strong>$60K/year</strong> vs $200K-$300K industry average.</p><div class="advantage-stat"><span class="stat-number">$60K</span><span class="stat-label">Starting Annual Cost</span></div></div></div>
+                <div class="advantage-card"><div class="advantage-icon">⚡</div><div class="advantage-content"><h3>2-4 Week Implementation</h3><p>Go live in weeks, not months.</p><div class="advantage-stat"><span class="stat-number">2-4</span><span class="stat-label">Weeks to Deploy</span></div></div></div>
+                <div class="advantage-card"><div class="advantage-icon">🤖</div><div class="advantage-content"><h3>Full AI Analysis Included</h3><p>Complete AI-powered vulnerability analysis.</p><div class="advantage-stat"><span class="stat-number">100%</span><span class="stat-label">AI Coverage</span></div></div></div>
+                <div class="advantage-card"><div class="advantage-icon">💬</div><div class="advantage-content"><h3>Native MS Teams</h3><p>True self-service via Microsoft Teams.</p><div class="advantage-stat"><span class="stat-number">Teams</span><span class="stat-label">Native Bot</span></div></div></div>
+                <div class="advantage-card"><div class="advantage-icon">🏢</div><div class="advantage-content"><h3>On-Premise Option</h3><p>Keep sensitive data in-house.</p><div class="advantage-stat"><span class="stat-number">Your</span><span class="stat-label">Infrastructure</span></div></div></div>
+                <div class="advantage-card"><div class="advantage-icon">🎯</div><div class="advantage-content"><h3>Built for Mid-Market</h3><p>Purpose-built for 1-25 SAP systems.</p><div class="advantage-stat"><span class="stat-number">1-25</span><span class="stat-label">SAP Systems</span></div></div></div>
+            </div>
+            <div class="comparison-banner fade-in">
+                <div class="banner-content"><h3>Traditional Solutions</h3><div class="comparison-items"><div class="compare-item negative"><span class="compare-icon">✕</span><span>$200K-$300K annual cost</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>3-6 month implementation</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>Limited AI analysis</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>Complex interfaces</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>Cloud-only data</span></div></div></div>
+                <div class="banner-divider"><span>VS</span></div>
+                <div class="banner-content syntaai"><h3>SyntaAI Advantage</h3><div class="comparison-items"><div class="compare-item positive"><span class="compare-icon">✓</span><span>Starting at $60K/year</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Live in 2-4 weeks</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Full AI + Remediation Plans</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Modern chatbot interface</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>On-premise option</span></div></div></div>
+            </div>
+            <div class="trust-section fade-in">
+                <div class="trust-item"><div class="trust-icon">🔒</div><h4>Enterprise Security</h4><p>SOC 2 compliant</p></div>
+                <div class="trust-item"><div class="trust-icon">☁️</div><h4>SAP RISE Ready</h4><p>Cloud deployments</p></div>
+                <div class="trust-item"><div class="trust-icon">🛡️</div><h4>GRC Integration</h4><p>Compliance workflows</p></div>
+                <div class="trust-item"><div class="trust-icon">📞</div><h4>Dedicated Support</h4><p>Fast response</p></div>
+            </div>
+            <div class="why-cta fade-in"><p>See why mid-market companies are switching to SyntaAI</p><div class="cta-buttons"><a href="#contact" class="btn btn-primary btn-lg">Get Custom Quote</a><a href="https://demo.syntaai.com" class="btn btn-teal btn-lg" target="_blank">Try Live Demo</a></div></div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="section-container">
+            <div class="section-header fade-in"><span class="section-label">Pricing</span><h2 class="section-title">Flexible Pricing for Your SAP Environment</h2><p class="section-subtitle">Enterprise security without enterprise pricing</p></div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in"><h3>Starter</h3><p class="subtitle">1-5 SAP systems</p><div class="pricing-value"><span class="amount">$3K</span><span class="period">/month</span></div><ul class="pricing-features"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>User Administration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Basic Security Scanning</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>AI Analysis</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Email Support</li></ul><a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Get Quote</a></div>
+                <div class="pricing-card featured fade-in"><span class="pricing-popular">Most Popular</span><h3>Professional</h3><p class="subtitle">Growing SAP environments</p><div class="pricing-value"><span class="amount">Custom</span></div><ul class="pricing-features"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Everything in Starter</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Advanced AI Analysis</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Full Vulnerability Management</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Priority Support</li></ul><a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Schedule Demo</a></div>
+                <div class="pricing-card fade-in"><h3>Enterprise</h3><p class="subtitle">Complex SAP landscapes</p><div class="pricing-value"><span class="amount">Let's Talk</span></div><ul class="pricing-features"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Everything in Professional</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited Systems</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom Development</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>24/7 Support + SLA</li></ul><a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Contact Sales</a></div>
+            </div>
+            <div class="roi-section fade-in"><h3>Typical Customer Savings</h3><div class="roi-grid"><div class="roi-col before"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>Before SyntaAI</h4><ul><li>• Manual security reviews: 160 hrs/month</li><li>• Multiple legacy tools: $150K/year</li><li>• Security incidents: 2-3/year</li><li>• Compliance audit prep: 40 hours</li><li style="color:#f43f5e">Total Cost: ~$250K/year</li></ul></div><div class="roi-col after"><h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>With SyntaAI</h4><ul><li>• Platform cost: $36K-96K/year</li><li>• Time saved: 80% reduction</li><li>• Incidents prevented: 95% detection</li><li>• Audit prep: Automated reports</li><li style="color:#10b981">Total Savings: $150K+/year</li></ul></div></div><div class="roi-highlight">Average ROI: 200-400%</div></div>
+            <div class="value-grid fade-in"><div class="value-item"><div class="value-icon">💰</div><h4>Value-Based</h4><p>Pay for what you use</p></div><div class="value-item"><div class="value-icon">📈</div><h4>Scales With You</h4><p>Add as you grow</p></div><div class="value-item"><div class="value-icon">🎯</div><h4>No Hidden Fees</h4><p>Transparent pricing</p></div></div>
+            <p style="text-align:center;color:var(--text-light);margin-top:1.5rem;font-size:0.85rem">Annual discounts available • 30-day free trial • No credit card required</p>
+        </div>
+    </section>
     <section id="user-admin">
         <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">User Administration</span>
-                <h2 class="section-title">Chatbot-Driven User Management</h2>
-                <p class="section-subtitle">SAP security administrators can manage the complete user lifecycle through natural language commands</p>
-            </div>
+            <div class="section-header fade-in"><span class="section-label">User Administration</span><h2 class="section-title">Chatbot-Driven User Management</h2><p class="section-subtitle">Manage user lifecycle through natural language commands</p></div>
             <div class="feature-showcase">
                 <div class="feature-content fade-in">
                     <h3>Simplify SAP Security Operations</h3>
-                    <p>No more navigating complex SAP screens — just ask the chatbot. Our intelligent automation handles user provisioning, access management, and compliance workflows.</p>
+                    <p>No more navigating complex SAP screens — just ask the chatbot.</p>
                     <div class="feature-points">
-                        <div class="feature-point">
-                            <div class="feature-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-                            <div><h4>Instant Provisioning</h4><p>Create new users, assign roles, and set up access in seconds</p></div>
-                        </div>
-                        <div class="feature-point">
-                            <div class="feature-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                            <div><h4>Self-Service Empowerment</h4><p>Users reset passwords and request access without IT tickets</p></div>
-                        </div>
-                        <div class="feature-point">
-                            <div class="feature-point-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-                            <div><h4>MS Teams Bot <span class="new-badge">NEW</span></h4><p>Identity-aware bot: /sap unlock, /sap reset-password, /sap user-info</p></div>
-                        </div>
-                        <div class="feature-point">
-                            <div class="feature-point-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.12 0 4.07.74 5.61 1.97"></path></svg></div>
-                            <div><h4>Approvers Workflow <span class="new-badge">NEW</span></h4><p>One-click manager approvals via Teams with full audit trail</p></div>
-                        </div>
+                        <div class="feature-point"><div class="feature-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div><div><h4>Instant Provisioning</h4><p>Create users, assign roles in seconds</p></div></div>
+                        <div class="feature-point"><div class="feature-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div><div><h4>Self-Service Empowerment</h4><p>Users reset passwords without IT tickets</p></div></div>
+                        <div class="feature-point"><div class="feature-point-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div><h4>MS Teams Bot <span class="new-badge">NEW</span></h4><p>/sap unlock, /sap reset-password</p></div></div>
+                        <div class="feature-point"><div class="feature-point-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg></div><div><h4>Approvers Workflow <span class="new-badge">NEW</span></h4><p>One-click manager approvals</p></div></div>
                     </div>
                 </div>
                 <div class="chat-demo fade-in">
                     <div class="chat-header"><div class="chat-avatar">🤖</div><div class="chat-info"><h4>SyntaAI Assistant</h4><span>Online</span></div></div>
                     <div class="chat-messages">
-                        <div class="chat-message user">Create user account for John Smith in Finance department</div>
-                        <div class="chat-message bot"><span class="success">✓ User created successfully</span><br><br><strong>Username:</strong> <code>JSMITH</code><br><strong>Roles:</strong> FI_CLERK, FI_VIEWER<br><strong>Status:</strong> Active<br><br>Initial password sent to john.smith@company.com</div>
+                        <div class="chat-message user">Create user for John Smith in Finance</div>
+                        <div class="chat-message bot"><span class="success">✓ User created</span><br><br><strong>Username:</strong> <code>JSMITH</code><br><strong>Roles:</strong> FI_CLERK, FI_VIEWER</div>
                         <div class="chat-message user">/sap unlock SJONES</div>
-                        <div class="chat-message bot"><span class="success">✓ Account SJONES unlocked</span><br><span class="success">✓ User notified via email</span><br><br><em>Unlocked by: Mike Johnson (via MS Teams)</em></div>
+                        <div class="chat-message bot"><span class="success">✓ Account SJONES unlocked</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Syntasec Section -->
-    <section id="syntasec">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Syntasec Platform</span>
-                <h2 class="section-title">AI-Powered SAP Vulnerability Management</h2>
-                <p class="section-subtitle">Unlike traditional tools that show technical CVE numbers, Syntasec uses AI to analyze business impact and generate strategic remediation plans</p>
-            </div>
-            <div class="syntasec-grid">
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">🤖</div><h3>Hybrid AI Architecture</h3><p>Choose between rule-based, cloud AI, or local AI analysis modes.</p></div>
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">⚡</div><h3>Real-Time Detection</h3><p>Automated scanning for 10+ vulnerability types.</p></div>
-                <div class="syntasec-card new-feature fade-in"><span class="syntasec-card-badge">NEW</span><div class="syntasec-card-icon">📋</div><h3>SAP Security Notes</h3><p>Automated monitoring, tracking status & deployment scheduling.</p></div>
-                <div class="syntasec-card new-feature fade-in"><span class="syntasec-card-badge">NEW</span><div class="syntasec-card-icon">🎯</div><h3>Remediation Plans</h3><p>AI-generated phased plans with timelines & resource estimates.</p></div>
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">⚙️</div><h3>21+ Security Controls</h3><p>Pre-built rules plus custom industry-specific checks.</p></div>
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">📊</div><h3>Smart Dashboard</h3><p>Real-time stats, trends, risk scoring & Excel/PDF export.</p></div>
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">🔧</div><h3>Patch Management</h3><p>Track, schedule & deploy patches across SAP landscape.</p></div>
-                <div class="syntasec-card fade-in"><div class="syntasec-card-icon">☁️</div><h3>SAP RISE Ready</h3><p>Built for modern cloud & hybrid deployments.</p></div>
-            </div>
-            <div class="comparison-box fade-in">
-                <h3>Why Choose Syntasec?</h3>
-                <div class="comparison-grid">
-                    <div class="comparison-col">
-                        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>AI-Powered Intelligence</h4>
-                        <ul><li>• Business impact analysis for every vulnerability</li><li>• AI-generated remediation roadmaps</li><li>• SAP Security Notes monitoring & tracking</li><li>• Conversational chatbot interface</li><li>• Phased patch deployment strategies</li></ul>
-                    </div>
-                    <div class="comparison-col">
-                        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Enterprise Features, Mid-Market Price</h4>
-                        <ul><li>• Complete vulnerability management platform</li><li>• Professional implementation in days, not months</li><li>• Intuitive interface requiring minimal training</li><li>• Configurable security controls for your industry</li><li>• SAP RISE ready for modern cloud deployments</li></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Platform Overview</span>
-                <h2 class="section-title">See How SyntaAI Works</h2>
-                <p class="section-subtitle">A comprehensive look at our AI-powered SAP security platform — from vulnerability scanning to automated user management</p>
-            </div>
-            <div class="platform-overview fade-in">
-                <div class="overview-image-container" onclick="openLightbox()">
-                    <img src="platform-overview.png" alt="SyntaAI Platform Overview" class="overview-image">
-                    <div class="overview-overlay"><div class="overlay-content"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg><span>Click to View Full Size</span></div></div>
-                </div>
-                <div class="overview-highlights">
-                    <div class="highlight-card"><div class="highlight-icon">🔍</div><h4>Syntasec Dashboard</h4><p>Central security & vulnerability management with AI-powered analysis</p></div>
-                    <div class="highlight-card"><div class="highlight-icon">🤖</div><h4>Conversational AI</h4><p>MS Teams bot & web chatbot for automated SAP operations</p></div>
-                    <div class="highlight-card"><div class="highlight-icon">📊</div><h4>Real-Time Analytics</h4><p>Dashboard analytics with vulnerability trends & risk scoring</p></div>
-                    <div class="highlight-card"><div class="highlight-icon">⚡</div><h4>Automated Operations</h4><p>Self-service password resets, user terminations & GRC submissions</p></div>
-                </div>
-                <div class="overview-cta">
-                    <button class="btn btn-primary btn-lg" onclick="openLightbox()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>View Full Platform Overview</button>
-                    <a href="#contact" class="btn btn-teal btn-lg">Schedule a Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
-            <img src="platform-overview.png" alt="SyntaAI Platform Overview">
-            <div class="lightbox-caption"><h3>SyntaAI: The AI-Powered SAP Security Platform</h3><p>Complete overview of Syntasec Dashboard & Conversational Automation capabilities</p></div>
-        </div>
-    </div>
-
-    <!-- Why Choose SyntaAI Section -->
-    <section id="why-syntaai">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Why SyntaAI</span>
-                <h2 class="section-title">The Smarter Choice for SAP Security</h2>
-                <p class="section-subtitle">Enterprise-grade protection without the enterprise price tag or complexity</p>
-            </div>
-            <div class="advantages-grid fade-in">
-                <div class="advantage-card highlight"><div class="advantage-icon">💰</div><div class="advantage-content"><h3>70% Lower Cost</h3><p>Starting at <strong>$60K/year</strong> vs. industry average of $200K-$300K. Enterprise features without the enterprise price.</p><div class="advantage-stat"><span class="stat-number">$60K</span><span class="stat-label">Starting Annual Cost</span></div></div></div>
-                <div class="advantage-card"><div class="advantage-icon">⚡</div><div class="advantage-content"><h3>2-4 Week Implementation</h3><p>Go live in weeks, not months. No lengthy consulting engagements or complex deployments.</p><div class="advantage-stat"><span class="stat-number">2-4</span><span class="stat-label">Weeks to Deploy</span></div></div></div>
-                <div class="advantage-card"><div class="advantage-icon">🤖</div><div class="advantage-content"><h3>Full AI Analysis Included</h3><p>Complete AI-powered vulnerability analysis with every plan. No limited tiers or cloud-only restrictions.</p><div class="advantage-stat"><span class="stat-number">100%</span><span class="stat-label">AI Coverage</span></div></div></div>
-                <div class="advantage-card"><div class="advantage-icon">💬</div><div class="advantage-content"><h3>Native MS Teams Integration</h3><p>True self-service via Microsoft Teams. Users get help instantly without leaving their workflow.</p><div class="advantage-stat"><span class="stat-number">Teams</span><span class="stat-label">Native Bot</span></div></div></div>
-                <div class="advantage-card"><div class="advantage-icon">🏢</div><div class="advantage-content"><h3>On-Premise Option</h3><p>Keep sensitive data in-house. Deploy on your infrastructure with full control and compliance.</p><div class="advantage-stat"><span class="stat-number">Your</span><span class="stat-label">Infrastructure</span></div></div></div>
-                <div class="advantage-card"><div class="advantage-icon">🎯</div><div class="advantage-content"><h3>Built for Mid-Market</h3><p>Purpose-built for companies with 1-25 SAP systems. Not a stripped-down enterprise tool.</p><div class="advantage-stat"><span class="stat-number">1-25</span><span class="stat-label">SAP Systems</span></div></div></div>
-            </div>
-            <div class="comparison-banner fade-in">
-                <div class="banner-content"><h3>Traditional Solutions</h3><div class="comparison-items"><div class="compare-item negative"><span class="compare-icon">✕</span><span>$200K-$300K annual cost</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>3-6 month implementation</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>Limited or no AI analysis</span></div><div class="compare-item negative"><span class="compare-icon">✕</span><span>Complex, outdated interfaces</span></div></div></div>
-                <div class="banner-divider"><span>VS</span></div>
-                <div class="banner-content syntaai"><h3>SyntaAI Advantage</h3><div class="comparison-items"><div class="compare-item positive"><span class="compare-icon">✓</span><span>Starting at $60K/year</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Live in 2-4 weeks</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Full AI + Remediation Plans</span></div><div class="compare-item positive"><span class="compare-icon">✓</span><span>Modern chatbot interface</span></div></div></div>
-            </div>
-            <div class="trust-section fade-in">
-                <div class="trust-item"><div class="trust-icon">🔒</div><h4>Enterprise Security</h4><p>SOC 2 compliant infrastructure</p></div>
-                <div class="trust-item"><div class="trust-icon">☁️</div><h4>SAP RISE Ready</h4><p>Built for modern cloud deployments</p></div>
-                <div class="trust-item"><div class="trust-icon">🛡️</div><h4>GRC Integration</h4><p>Seamless compliance workflows</p></div>
-                <div class="trust-item"><div class="trust-icon">📞</div><h4>Dedicated Support</h4><p>Real humans, fast response times</p></div>
-            </div>
-            <div class="why-cta fade-in">
-                <p>See why mid-market companies are switching to SyntaAI</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary btn-lg">Get Custom Quote</a>
-                    <a href="https://demo.syntaai.com" class="btn btn-teal btn-lg" target="_blank">Try Live Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-label">Pricing</span>
-                <h2 class="section-title">Flexible Pricing for Your SAP Environment</h2>
-                <p class="section-subtitle">Enterprise-grade security without enterprise pricing complexity</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <h3>Starter</h3>
-                    <p class="subtitle">Perfect for 1-5 SAP systems</p>
-                    <div class="pricing-value"><span class="amount">$3K</span><span class="period">/month</span></div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>User Administration</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Basic Security Scanning</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>AI Analysis</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Email Support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Get Quote</a>
-                </div>
-                <div class="pricing-card featured fade-in">
-                    <span class="pricing-popular">Most Popular</span>
-                    <h3>Professional</h3>
-                    <p class="subtitle">For growing SAP environments</p>
-                    <div class="pricing-value"><span class="amount">Custom</span></div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Everything in Starter</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Advanced AI Analysis</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Full Vulnerability Management</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Priority Support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Schedule Demo</a>
-                </div>
-                <div class="pricing-card fade-in">
-                    <h3>Enterprise</h3>
-                    <p class="subtitle">For complex SAP landscapes</p>
-                    <div class="pricing-value"><span class="amount">Let's Talk</span></div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Everything in Professional</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Unlimited Systems</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Custom Development</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>24/7 Support + SLA</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Contact Sales</a>
-                </div>
-            </div>
-            <div class="roi-section fade-in">
-                <h3>Typical Customer Savings</h3>
-                <div class="roi-grid">
-                    <div class="roi-col before">
-                        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>Before SyntaAI</h4>
-                        <ul><li>• Manual security reviews: 160 hours/month</li><li>• Multiple legacy tools: $150K/year</li><li>• Security incidents: 2-3/year</li><li>• Compliance audit prep: 40 hours</li><li style="color: #f43f5e;">Total Cost: ~$250K/year</li></ul>
-                    </div>
-                    <div class="roi-col after">
-                        <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>With SyntaAI</h4>
-                        <ul><li>• Platform cost: $36K-96K/year</li><li>• Time saved: 80% reduction</li><li>• Incidents prevented: 95% detection rate</li><li>• Audit prep: Automated reports</li><li style="color: #10b981;">Total Savings: $150K+/year</li></ul>
-                    </div>
-                </div>
-                <div class="roi-highlight">Average ROI: 200-400%</div>
-            </div>
-            <div class="value-grid fade-in">
-                <div class="value-item"><div class="value-icon">💰</div><h4>Value-Based</h4><p>Pay for systems and features you actually use</p></div>
-                <div class="value-item"><div class="value-icon">📈</div><h4>Scales With You</h4><p>Add systems and features as you grow</p></div>
-                <div class="value-item"><div class="value-icon">🎯</div><h4>No Hidden Fees</h4><p>Transparent pricing, no surprise charges</p></div>
-            </div>
-            <p style="text-align: center; color: var(--text-light); margin-top: 2rem; font-size: 0.9rem;">Annual discounts available • 30-day free trial • No credit card required</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
     <section id="contact">
         <div class="section-container">
             <div class="cta-container">
-                <div class="cta-header fade-in">
-                    <h2>Ready to <span class="gradient-text">Secure</span> Your SAP Systems?</h2>
-                    <p>Join companies already using our complete SAP security automation platform</p>
-                </div>
+                <div class="cta-header fade-in"><h2>Ready to <span class="gradient-text">Secure</span> Your SAP Systems?</h2><p>Join companies using our SAP security automation platform</p></div>
                 <form class="contact-form fade-in" action="https://docs.google.com/forms/d/e/1FAIpQLSfD_u9zVJJZQpksulKpgOrJf6kadF5-NNL1rfqyih9wSkL5MA/formResponse" method="POST" target="_blank" onsubmit="submitToGoogle(event)">
-                    <div class="form-row">
-                        <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" name="entry.1703733875" placeholder="John" required></div>
-                        <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="entry.1335441498" placeholder="Smith"></div>
-                    </div>
+                    <div class="form-row"><div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" name="entry.1703733875" placeholder="John" required></div><div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="entry.1335441498" placeholder="Smith"></div></div>
                     <div class="form-group"><label for="email">Work Email *</label><input type="email" id="email" name="entry.1183471405" placeholder="john.smith@company.com" required></div>
                     <div class="form-group"><label for="company">Company Name</label><input type="text" id="company" name="entry.966649018" placeholder="Acme Corporation"></div>
-                    <div class="form-group">
-                        <label>Which solution interests you?</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="SAP User Administration Automation"><span>SAP User Administration Automation</span></label>
-                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Syntasec Security &amp; Vulnerability Management"><span>Syntasec Security & Vulnerability Management</span></label>
-                            <label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Both (Complete SAP Security Platform)"><span>Both (Complete SAP Security Platform)</span></label>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="requestType">Request Type *</label><select id="requestType" name="entry.1641806699" required><option value="">Select request type</option><option value="request demo">Request Demo</option><option value="pricing information">Pricing Information</option><option value="support">Support</option><option value="general enquiry">General Inquiry</option></select></div>
-                        <div class="form-group"><label for="sapSystems">Number of SAP Systems</label><select id="sapSystems" name="entry.949597304"><option value="">Select range</option><option value="1-3 systens">1-3 systems</option><option value="4-10 systems">4-10 systems</option><option value="11-25 systems">11-25 systems</option><option value="25+ systems">25+ systems</option></select></div>
-                    </div>
-                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="entry.133975214" rows="4" placeholder="Tell us about your SAP landscape and requirements..."></textarea></div>
+                    <div class="form-group"><label>Which solution interests you?</label><div class="checkbox-group"><label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="SAP User Administration Automation"><span>SAP User Administration</span></label><label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Syntasec Security &amp; Vulnerability Management"><span>Syntasec Security Platform</span></label><label class="checkbox-item"><input type="checkbox" name="entry.940680250" value="Both (Complete SAP Security Platform)"><span>Both (Complete Platform)</span></label></div></div>
+                    <div class="form-row"><div class="form-group"><label for="requestType">Request Type *</label><select id="requestType" name="entry.1641806699" required><option value="">Select type</option><option value="request demo">Request Demo</option><option value="pricing information">Pricing Info</option><option value="support">Support</option><option value="general enquiry">General Inquiry</option></select></div><div class="form-group"><label for="sapSystems">SAP Systems</label><select id="sapSystems" name="entry.949597304"><option value="">Select</option><option value="1-3 systens">1-3</option><option value="4-10 systems">4-10</option><option value="11-25 systems">11-25</option><option value="25+ systems">25+</option></select></div></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="entry.133975214" rows="3" placeholder="Tell us about your SAP landscape..."></textarea></div>
                     <div class="form-actions"><button type="submit" class="btn btn-primary btn-lg">Send Request</button></div>
-                    <div class="contact-info"><p>📧 Email us directly: <a href="mailto:contact@syntaai.com">contact@syntaai.com</a></p><p style="margin-top: 0.5rem;">🎮 Try the demo: <a href="https://demo.syntaai.com" target="_blank">demo.syntaai.com</a></p></div>
+                    <div class="contact-info"><p>📧 <a href="mailto:contact@syntaai.com">contact@syntaai.com</a> | 🎮 <a href="https://demo.syntaai.com" target="_blank">demo.syntaai.com</a></p></div>
                 </form>
             </div>
         </div>
     </section>
-</a>
-                    </div>
-                </div>
-                <div class="footer-col"><h4>Products</h4><ul><li><a href="#user-admin">User Administration</a></li><li><a href="#syntasec">Syntasec Security</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://demo.syntaai.com" target="_blank">Live Demo</a></li></ul></div>
-                <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Documentation</a></li><li><a href="#">Blog</a></li><li><a href="#">Case Studies</a></li><li><a href="#">API Reference</a></li></ul></div>
-                <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Partners</a></li></ul></div>
-                <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@syntaai.com">contact@syntaai.com</a></li><li><a href="https://demo.syntaai.com" target="_blank">demo.syntaai.com</a></li></ul></div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="#" class="logo"><div class="logo-icon">S</div><span class="logo-text">Synta<span>AI</span></span></a><p>AI-powered SAP security automation at 70% lower cost.</p></div>
+                <div class="footer-col"><h4>Products</h4><ul><li><a href="#syntasec">Syntasec</a></li><li><a href="#user-admin">User Admin</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://demo.syntaai.com" target="_blank">Demo</a></li></ul></div>
+                <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Docs</a></li><li><a href="#">Blog</a></li><li><a href="#">Case Studies</a></li></ul></div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Partners</a></li></ul></div>
+                <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@syntaai.com">contact@syntaai.com</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 SyntaAI. All rights reserved.</p>
-                <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div>
-            </div>
+            <div class="footer-bottom"><p>© 2025 SyntaAI. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
         </div>
     </footer>
 
     <script>
-        function submitToGoogle(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            fetch(form.action, { method: 'POST', body: formData, mode: 'no-cors' }).then(() => {
-                form.innerHTML = '<div style="text-align: center; padding: 3rem;"><div style="font-size: 4rem; margin-bottom: 1rem;">✅</div><h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">Thank You!</h3><p style="color: var(--text-medium); margin-bottom: 1.5rem;">Your request has been submitted successfully.<br>We will get back to you within 24 hours.</p><a href="#" onclick="location.reload()" class="btn btn-primary">Submit Another Request</a></div>';
-            }).catch(() => {
-                form.innerHTML = '<div style="text-align: center; padding: 3rem;"><div style="font-size: 4rem; margin-bottom: 1rem;">✅</div><h3 style="color: var(--accent-emerald); margin-bottom: 1rem;">Thank You!</h3><p style="color: var(--text-medium); margin-bottom: 1.5rem;">Your request has been submitted successfully.<br>We will get back to you within 24 hours.</p><a href="#" onclick="location.reload()" class="btn btn-primary">Submit Another Request</a></div>';
-            });
-        }
-        function openLightbox() { document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeLightbox(event) { if (event.target.classList.contains('lightbox') || event.target.classList.contains('lightbox-close')) { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } }
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } });
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } });
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-        mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-        navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); }); });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
-        fadeElements.forEach(el => observer.observe(el));
+        function submitToGoogle(e){e.preventDefault();const form=e.target;fetch(form.action,{method:'POST',body:new FormData(form),mode:'no-cors'}).then(()=>{form.innerHTML='<div style="text-align:center;padding:3rem"><div style="font-size:4rem;margin-bottom:1rem">✅</div><h3 style="color:#10b981;margin-bottom:1rem">Thank You!</h3><p>We will get back to you within 24 hours.</p></div>'}).catch(()=>{form.innerHTML='<div style="text-align:center;padding:3rem"><div style="font-size:4rem">✅</div><h3 style="color:#10b981">Thank You!</h3><p>Request submitted.</p></div>'})}
+        function openLightbox(){document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
+        function closeLightbox(event){if(event.target.classList.contains('lightbox')||event.target.classList.contains('lightbox-close')){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}});
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
+        document.getElementById('mobileToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('active')});
+        document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('active')})});
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();document.querySelector(this.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})})});
+        const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:0.1});
+        document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
     </script>
 </body>
 </html>
