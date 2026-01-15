@@ -3,165 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAP Security Patch Day Archive | SyntaAI</title>
-    <meta name="description" content="Archive of all SAP Security Patch Day notes. Download JSON data for SAP security tools.">
+    <title>SAP Security Patch Day Archive | SyntaAI Security Intelligence</title>
+    <meta name="description" content="Download SAP Security Notes data for your security tools. Monthly SAP Patch Day archive with JSON downloads.">
+    <link rel="canonical" href="https://syntaai.com/sap-security-notes/">
     <style>
-        * { box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; 
+        * {
+            margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            color: #1a1a2e;
         }
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 40px 20px;
-        }
+
         .header {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             text-align: center;
+            padding: 60px 20px 40px;
+            color: white;
         }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 20px;
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
-        .logo a { color: #667eea; text-decoration: none; }
-        h1 { 
-            color: #1a202c; 
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-        }
-        .subtitle {
-            color: #718096;
+
+        .header h2 {
             font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
             margin-bottom: 30px;
         }
-        .actions {
+
+        .header-buttons {
             display: flex;
-            gap: 15px;
             justify-content: center;
+            gap: 15px;
             flex-wrap: wrap;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 28px;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .btn-secondary { background: white; color: #667eea; border: 2px solid #667eea; }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
+
+        .btn:hover {
+            transform: translateY(-2px);
         }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #4f46e5;
+            border: 2px solid white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
         .card {
             background: white;
             border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card-title {
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-new {
+            border: 2px solid #4f46e5;
+            position: relative;
+        }
+
+        .card-new::before {
+            content: "NEW";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #4f46e5;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #1a202c;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            color: #1a1a2e;
         }
+
         .card-date {
-            color: #718096;
-            margin-bottom: 20px;
-        }
-        .card-stats {
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .stat {
-            padding: 8px 16px;
-            border-radius: 8px;
+            align-items: center;
+            gap: 8px;
+            color: #666;
             font-size: 0.9rem;
-            font-weight: 600;
+            margin-bottom: 16px;
         }
-        .stat.total { background: #edf2f7; color: #2d3748; }
-        .stat.critical { background: #fed7d7; color: #c53030; }
-        .stat.high { background: #feebc8; color: #c05621; }
-        .card-actions {
+
+        .badges {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
         }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge-total {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .badge-critical {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .badge-high {
+            background: #fff7ed;
+            color: #ea580c;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
         .card-btn {
             flex: 1;
-            padding: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 16px;
             border-radius: 8px;
-            text-align: center;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.9rem;
+            transition: background 0.2s;
         }
-        .card-btn.json { background: #667eea; color: white; }
-        .card-btn.html { background: #edf2f7; color: #667eea; }
-        
+
+        .card-btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .card-btn-primary:hover {
+            background: #4338ca;
+        }
+
+        .card-btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .card-btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
         .footer {
             text-align: center;
             padding: 40px 20px;
             color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
         }
-        .footer a { color: white; }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo"><a href="https://syntaai.com">🛡️ SyntaAI Security Intelligence</a></div>
-            <h1>SAP Security Patch Day Archive</h1>
-            <p class="subtitle">Download SAP Security Notes data for your security tools</p>
-            <div class="actions">
-                <a href="latest.json" class="btn btn-primary" download>⬇️ Download Latest JSON</a>
-                <a href="latest.html" class="btn btn-secondary">📄 View Latest</a>
-                <a href="https://syntaai.com" class="btn btn-secondary">🚀 Get Syntasec</a>
-            </div>
+    <header class="header">
+        <div class="header-icon">🛡️</div>
+        <h2>SyntaAI Security Intelligence</h2>
+        <h1>SAP Security Patch Day Archive</h1>
+        <p>Download SAP Security Notes data for your security tools</p>
+        <div class="header-buttons">
+            <a href="latest.json" class="btn btn-primary" download>
+                ⬇️ Download Latest JSON
+            </a>
+            <a href="latest.html" class="btn btn-secondary">
+                📄 View Latest
+            </a>
+            <a href="https://demo.syntaai.com" class="btn btn-outline">
+                🚀 Get Syntasec
+            </a>
         </div>
-        
-        <div class="grid">
+    </header>
 
+    <main class="container">
+        <div class="cards-grid">
+            <!-- January 2026 - NEW -->
+            <div class="card card-new">
+                <h3>January 2026</h3>
+                <div class="card-date">
+                    📅 Released: 2026-01-13
+                </div>
+                <div class="badges">
+                    <span class="badge badge-total">17 Notes</span>
+                    <span class="badge badge-critical">4 Critical</span>
+                    <span class="badge badge-high">4 High</span>
+                </div>
+                <div class="card-buttons">
+                    <a href="jan-2026.json" class="card-btn card-btn-primary" download>
+                        ⬇️ JSON
+                    </a>
+                    <a href="jan-2026.html" class="card-btn card-btn-secondary">
+                        📄 View
+                    </a>
+                </div>
+            </div>
+
+            <!-- December 2025 -->
             <div class="card">
-                <div class="card-title">December 2025</div>
-                <div class="card-date">📅 Released: 2025-12-09</div>
-                <div class="card-stats">
-                    <span class="stat total">14 Notes</span>
-                    <span class="stat critical">3 Critical</span>
-                    <span class="stat high">5 High</span>
+                <h3>December 2025</h3>
+                <div class="card-date">
+                    📅 Released: 2025-12-09
                 </div>
-                <div class="card-actions">
-                    <a href="dec-2025.json" class="card-btn json" download>⬇️ JSON</a>
-                    <a href="dec-2025.html" class="card-btn html">📄 View</a>
+                <div class="badges">
+                    <span class="badge badge-total">14 Notes</span>
+                    <span class="badge badge-critical">3 Critical</span>
+                    <span class="badge badge-high">5 High</span>
+                </div>
+                <div class="card-buttons">
+                    <a href="dec-2025.json" class="card-btn card-btn-primary" download>
+                        ⬇️ JSON
+                    </a>
+                    <a href="dec-2025.html" class="card-btn card-btn-secondary">
+                        📄 View
+                    </a>
                 </div>
             </div>
 
+            <!-- Add more months here as they are released -->
+
         </div>
-        
-        <div class="footer">
-            <p>© 2025 <a href="https://syntaai.com">SyntaAI</a> - SAP Security Intelligence Platform</p>
-            <p>Data sourced from official SAP Security Patch Day releases</p>
-            <p>Last updated: 2025-12-29 11:53 UTC</p>
-        </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+        <p>Data sourced from <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news.html" target="_blank">SAP Security Patch Day</a></p>
+        <p style="margin-top: 8px;">Powered by <a href="https://demo.syntaai.com" target="_blank">SyntaAI Security Platform</a></p>
+    </footer>
 </body>
 </html>
