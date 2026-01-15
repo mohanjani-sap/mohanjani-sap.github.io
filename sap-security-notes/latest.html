@@ -3,340 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAP Security Patch Day - December 2025 | SyntaAI</title>
-    <meta name="description" content="SAP Security Notes for December 2025 - 14 security vulnerabilities. Download JSON for your SAP security tools.">
+    <title>SAP Security Notes - January 2026 | SyntaAI</title>
+    <meta name="description" content="SAP Security Patch Day January 2026 - 17 security notes released. 4 Critical, 4 High, 7 Medium severity. Including SQL Injection CVE-2026-0501 (CVSS 9.9) and Remote Code Execution CVE-2026-0500 (CVSS 9.6).">
+    <meta name="keywords" content="SAP Security, Patch Day, January 2026, CVE-2026-0501, CVE-2026-0500, S/4HANA Security, SAP HANA Vulnerability">
+    <link rel="canonical" href="https://syntaai.com/sap-security-notes/jan-2026.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SAP Security Patch Day - January 2026 | SyntaAI">
+    <meta property="og:description" content="17 SAP security notes released including 4 Critical vulnerabilities. SQL Injection (CVSS 9.9) and RCE (CVSS 9.6) in S/4HANA.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://syntaai.com/sap-security-notes/jan-2026.html">
+    
     <style>
-        * { box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; 
-            padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        :root {
+            --primary: #6366f1;
+            --critical: #ef4444;
+            --high: #f97316;
+            --medium: #eab308;
+            --low: #22c55e;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
         }
-        .container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 40px 20px;
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
-        .header {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 20px;
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        .logo a { color: #667eea; text-decoration: none; }
-        h1 { 
-            color: #1a202c; 
-            margin: 0 0 10px 0;
+
+        h1 {
             font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
         }
-        .meta { 
-            color: #718096; 
-            margin-bottom: 30px;
+
+        .subtitle {
+            color: var(--text-muted);
             font-size: 1.1rem;
         }
-        .meta a { color: #667eea; }
+
+        .alert-banner {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--critical);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .alert-banner h3 {
+            color: var(--critical);
+            margin-bottom: 0.5rem;
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
+
         .stat-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 20px;
+            background: var(--card-bg);
             border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
         }
-        .stat-card.critical { background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%); }
-        .stat-card.high { background: linear-gradient(135deg, #feebc8 0%, #fbd38d 100%); }
-        .stat-card.medium { background: linear-gradient(135deg, #fefcbf 0%, #faf089 100%); }
-        .stat-number { font-size: 2.5rem; font-weight: bold; color: #2d3748; }
-        .stat-label { color: #718096; font-size: 0.9rem; text-transform: uppercase; }
-        .actions {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+
+        .stat-card.total { border-left: 4px solid var(--primary); }
+        .stat-card.critical { border-left: 4px solid var(--critical); }
+        .stat-card.high { border-left: 4px solid var(--high); }
+        .stat-card.medium { border-left: 4px solid var(--medium); }
+        .stat-card.low { border-left: 4px solid var(--low); }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
         }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
+
+        .stat-card.critical .stat-number { color: var(--critical); }
+        .stat-card.high .stat-number { color: var(--high); }
+        .stat-card.medium .stat-number { color: var(--medium); }
+        .stat-card.low .stat-number { color: var(--low); }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .patches-table {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .note-id a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .note-id a:hover { text-decoration: underline; }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge.critical { background: rgba(239, 68, 68, 0.2); color: var(--critical); }
+        .badge.high { background: rgba(249, 115, 22, 0.2); color: var(--high); }
+        .badge.medium { background: rgba(234, 179, 8, 0.2); color: var(--medium); }
+        .badge.low { background: rgba(34, 197, 94, 0.2); color: var(--low); }
+
+        .cvss { font-family: 'Monaco', 'Consolas', monospace; }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            margin-top: 1rem;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .btn-secondary { background: white; color: #667eea; border: 2px solid #667eea; }
-        
-        .table-container {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow-x: auto;
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
-        table { 
-            width: 100%; 
-            border-collapse: collapse;
+
+        .download-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
         }
-        th { 
-            background: #2d3748;
-            color: white; 
-            padding: 16px 12px; 
-            text-align: left;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
+
+        .download-section h3 {
+            margin-bottom: 1rem;
         }
-        td { 
-            padding: 16px 12px; 
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
+
+        .download-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-        tr:hover { background: #f7fafc; }
-        .priority {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+
+        .download-link {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            color: var(--primary);
+            text-decoration: none;
         }
-        .priority.critical { background: #fed7d7; color: #c53030; }
-        .priority.high { background: #feebc8; color: #c05621; }
-        .priority.medium { background: #fefcbf; color: #975a16; }
-        .priority.low { background: #c6f6d5; color: #276749; }
-        .cvss {
-            font-weight: bold;
-            font-size: 1.1rem;
+
+        .download-link:hover {
+            background: rgba(99, 102, 241, 0.2);
         }
-        .cvss.critical { color: #c53030; }
-        .cvss.high { color: #c05621; }
-        .cvss.medium { color: #975a16; }
-        .note-link { color: #667eea; text-decoration: none; font-weight: 600; }
-        .note-link:hover { text-decoration: underline; }
-        .title { font-weight: 500; color: #2d3748; }
-        .product { color: #718096; font-size: 0.95rem; }
-        
-        .footer {
+
+        footer {
             text-align: center;
-            padding: 40px 20px;
-            color: rgba(255,255,255,0.8);
+            margin-top: 3rem;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        .footer a { color: white; }
-        
+
+        footer a { color: var(--primary); text-decoration: none; }
+
+        .updated {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
         @media (max-width: 768px) {
+            .container { padding: 1rem; }
             h1 { font-size: 1.8rem; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-            th, td { padding: 12px 8px; font-size: 0.9rem; }
+            th, td { padding: 0.75rem 0.5rem; font-size: 0.9rem; }
+            .title { max-width: 200px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo"><a href="https://syntaai.com">🛡️ SyntaAI Security Intelligence</a></div>
-            <h1>SAP Security Patch Day - December 2025</h1>
-            <div class="meta">
-                <p>📅 Release Date: <strong>2025-12-09</strong> | 
-                   📊 Total Notes: <strong>14</strong> |
-                   🔗 <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/december-2025.html" target="_blank">SAP Source</a>
-                </p>
+        <header>
+            <h1>🔐 SAP Security Patch Day</h1>
+            <p class="subtitle">January 2026 - Released January 13, 2026</p>
+        </header>
+
+        <div class="alert-banner">
+            <h3>⚠️ Critical Alert</h3>
+            <p>This release contains <strong>4 Critical</strong> vulnerabilities including SQL Injection (CVSS 9.9) and Remote Code Execution (CVSS 9.6). Immediate patching recommended for S/4HANA and HANA database systems.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card total">
+                <div class="stat-number">17</div>
+                <div class="stat-label">Total Notes</div>
             </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-number">14</div>
-                    <div class="stat-label">Total Notes</div>
-                </div>
-                <div class="stat-card critical">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Critical</div>
-                </div>
-                <div class="stat-card high">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">High</div>
-                </div>
-                <div class="stat-card medium">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">Medium</div>
-                </div>
+            <div class="stat-card critical">
+                <div class="stat-number">4</div>
+                <div class="stat-label">🔴 Critical</div>
             </div>
-            
-            <div class="actions">
-                <a href="dec-2025.json" class="btn btn-primary" download>
-                    ⬇️ Download JSON
-                </a>
-                <a href="index.html" class="btn btn-secondary">
-                    📁 All Patch Days
-                </a>
-                <a href="https://syntaai.com" class="btn btn-secondary">
-                    🚀 Get Syntasec Tool
-                </a>
+            <div class="stat-card high">
+                <div class="stat-number">4</div>
+                <div class="stat-label">🟠 High</div>
+            </div>
+            <div class="stat-card medium">
+                <div class="stat-number">7</div>
+                <div class="stat-label">🟡 Medium</div>
+            </div>
+            <div class="stat-card low">
+                <div class="stat-number">2</div>
+                <div class="stat-label">🟢 Low</div>
             </div>
         </div>
-        
-        <div class="table-container">
+
+        <div class="download-section">
+            <h3>📥 Download</h3>
+            <div class="download-links">
+                <a href="jan-2026.json" class="download-link">📄 JSON Format</a>
+                <a href="https://syntaai.com/sap-security-notes/latest.json" class="download-link">📄 Latest JSON</a>
+            </div>
+        </div>
+
+        <div class="patches-table">
             <table>
                 <thead>
                     <tr>
-                        <th>Note #</th>
-                        <th>CVE</th>
+                        <th>SAP Note</th>
                         <th>Title</th>
-                        <th>Product</th>
-                        <th>Priority</th>
+                        <th>Severity</th>
                         <th>CVSS</th>
+                        <th>CVE</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3685270" target="_blank" class="note-link">3685270</a></td>
-                        <td>CVE-2025-42880</td>
-                        <td class="title">Code Injection vulnerability in SAP Solution Manager</td>
-                        <td class="product">SAP Solution Manager</td>
-                        <td><span class="priority critical">Critical</span></td>
-                        <td><span class="cvss critical">9.9</span></td>
+                    <tr class="patch-row critical">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3687749" target="_blank">3687749</a></td>
+                        <td class="title">SQL Injection Vulnerability in SAP S/4HANA Private Cloud and On-Premise (Financials – General Ledger)</td>
+                        <td class="severity"><span class="badge critical">🔴 Critical</span></td>
+                        <td class="cvss">9.9</td>
+                        <td class="cve">CVE-2026-0501</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3683579" target="_blank" class="note-link">3683579</a></td>
-                        <td>CVE-2025-55754</td>
-                        <td class="title">Multiple vulnerabilities in Apache Tomcat within SAP Commerce Cloud</td>
-                        <td class="product">SAP Commerce Cloud</td>
-                        <td><span class="priority critical">Critical</span></td>
-                        <td><span class="cvss critical">9.6</span></td>
+                    <tr class="patch-row critical">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3668679" target="_blank">3668679</a></td>
+                        <td class="title">Remote code execution in SAP Wily Introscope Enterprise Manager (WorkStation)</td>
+                        <td class="severity"><span class="badge critical">🔴 Critical</span></td>
+                        <td class="cvss">9.6</td>
+                        <td class="cve">CVE-2026-0500</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3685286" target="_blank" class="note-link">3685286</a></td>
-                        <td>CVE-2025-42928</td>
-                        <td class="title">Deserialization Vulnerability in SAP jConnect - SDK for ASE</td>
-                        <td class="product">SAP jConnect - SDK for ASE</td>
-                        <td><span class="priority critical">Critical</span></td>
-                        <td><span class="cvss critical">9.1</span></td>
+                    <tr class="patch-row critical">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3694242" target="_blank">3694242</a></td>
+                        <td class="title">Code Injection vulnerability in SAP S/4HANA (Private Cloud and On-Premise)</td>
+                        <td class="severity"><span class="badge critical">🔴 Critical</span></td>
+                        <td class="cvss">9.1</td>
+                        <td class="cve">CVE-2026-0498</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3684682" target="_blank" class="note-link">3684682</a></td>
-                        <td>CVE-2025-42878</td>
-                        <td class="title">Sensitive Data Exposure in SAP Web Dispatcher and Internet Communication Manager (ICM)</td>
-                        <td class="product">SAP Web Dispatcher and Internet Communication Manager (ICM)</td>
-                        <td><span class="priority high">High</span></td>
-                        <td><span class="cvss high">8.2</span></td>
+                    <tr class="patch-row critical">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3697979" target="_blank">3697979</a></td>
+                        <td class="title">Code Injection vulnerability in SAP Landscape Transformation</td>
+                        <td class="severity"><span class="badge critical">🔴 Critical</span></td>
+                        <td class="cvss">9.1</td>
+                        <td class="cve">CVE-2026-0491</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3640185" target="_blank" class="note-link">3640185</a></td>
-                        <td>CVE-2025-42874</td>
-                        <td class="title">Denial of service (DOS) in SAP NetWeaver (remote service for Xcelsius)</td>
-                        <td class="product">SAP NetWeaver (remote service for Xcelsius)</td>
-                        <td><span class="priority high">High</span></td>
-                        <td><span class="cvss high">7.9</span></td>
+                    <tr class="patch-row high">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3691059" target="_blank">3691059</a></td>
+                        <td class="title">Privilege escalation vulnerability in SAP HANA database</td>
+                        <td class="severity"><span class="badge high">🟠 High</span></td>
+                        <td class="cvss">8.8</td>
+                        <td class="cve">CVE-2026-0492</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3650226" target="_blank" class="note-link">3650226</a></td>
-                        <td>CVE-2025-48976</td>
-                        <td class="title">Denial of service (DOS) in SAP Business Objects</td>
-                        <td class="product">SAP Business Objects</td>
-                        <td><span class="priority high">High</span></td>
-                        <td><span class="cvss high">7.5</span></td>
+                    <tr class="patch-row high">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3675151" target="_blank">3675151</a></td>
+                        <td class="title">OS Command Injection vulnerability in SAP Application Server for ABAP and SAP NetWeaver RFCSDK</td>
+                        <td class="severity"><span class="badge high">🟠 High</span></td>
+                        <td class="cvss">8.4</td>
+                        <td class="cve">CVE-2026-0507</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3677544" target="_blank" class="note-link">3677544</a></td>
-                        <td>CVE-2025-42877</td>
-                        <td class="title">Memory Corruption vulnerability in SAP Web Dispatcher, Internet Communication Manager and SAP Content Server</td>
-                        <td class="product">SAP Web Dispatcher, Internet Communication Manager and SAP Content Server</td>
-                        <td><span class="priority high">High</span></td>
-                        <td><span class="cvss high">7.5</span></td>
+                    <tr class="patch-row high">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3565506" target="_blank">3565506</a></td>
+                        <td class="title">Multiple vulnerabilities in SAP Fiori App (Intercompany Balance Reconciliation)</td>
+                        <td class="severity"><span class="badge high">🟠 High</span></td>
+                        <td class="cvss">8.1</td>
+                        <td class="cve">CVE-2026-0511</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3672151" target="_blank" class="note-link">3672151</a></td>
-                        <td>CVE-2025-42876</td>
-                        <td class="title">Missing Authorization Check in SAP S/4 HANA Private Cloud (Financials General Ledger)</td>
-                        <td class="product">SAP S/4 HANA Private Cloud (Financials General Ledger)</td>
-                        <td><span class="priority high">High</span></td>
-                        <td><span class="cvss high">7.1</span></td>
+                    <tr class="patch-row high">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3688703" target="_blank">3688703</a></td>
+                        <td class="title">Missing Authorization check in SAP NetWeaver Application Server ABAP and ABAP Platform</td>
+                        <td class="severity"><span class="badge high">🟠 High</span></td>
+                        <td class="cvss">8.1</td>
+                        <td class="cve">CVE-2026-0506</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3591163" target="_blank" class="note-link">3591163</a></td>
-                        <td>CVE-2025-42875</td>
-                        <td class="title">Missing Authentication check in SAP NetWeaver Internet Communication Framework</td>
-                        <td class="product">SAP NetWeaver Internet Communication Framework</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">6.6</span></td>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3681523" target="_blank">3681523</a></td>
+                        <td class="title">Missing Authorization check in SAP ERP Central Component and SAP S/4HANA (SAP EHS Management)</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">6.4</td>
+                        <td class="cve">CVE-2026-0503</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3662324" target="_blank" class="note-link">3662324</a></td>
-                        <td>CVE-2025-42904</td>
-                        <td class="title">Information Disclosure vulnerability in Application Server ABAP</td>
-                        <td class="product">Application Server ABAP</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">6.5</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3662622" target="_blank" class="note-link">3662622</a></td>
-                        <td>CVE-2025-42872</td>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3687372" target="_blank">3687372</a></td>
                         <td class="title">Cross-Site Scripting (XSS) vulnerability in SAP NetWeaver Enterprise Portal</td>
-                        <td class="product">SAP NetWeaver Enterprise Portal</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">6.1</span></td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">6.1</td>
+                        <td class="cve">CVE-2026-0499</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3676970" target="_blank" class="note-link">3676970</a></td>
-                        <td>CVE-2025-42873</td>
-                        <td class="title">Denial of Service (DoS) in SAPUI5 framework (Markdown-it component)</td>
-                        <td class="product">SAPUI5 framework (Markdown-it component)</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">5.9</span></td>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3666061" target="_blank">3666061</a></td>
+                        <td class="title">Cross-Site Scripting (XSS) vulnerability in SAP Business Connector</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">6.1</td>
+                        <td class="cve">CVE-2026-0514</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3659117" target="_blank" class="note-link">3659117</a></td>
-                        <td>CVE-2025-42891</td>
-                        <td class="title">Missing Authorization check in SAP Enterprise Search for ABAP</td>
-                        <td class="product">SAP Enterprise Search for ABAP</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">5.5</span></td>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3638716" target="_blank">3638716</a></td>
+                        <td class="title">Open Redirect Vulnerability in SAP Supplier Relationship Management (SICF Handler in SRM Catalog)</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">4.7</td>
+                        <td class="cve">CVE-2026-0513</td>
                     </tr>
-
-                    <tr>
-                        <td><a href="https://me.sap.com/notes/3651390" target="_blank" class="note-link">3651390</a></td>
-                        <td>CVE-2025-42896</td>
-                        <td class="title">Server-Side Request Forgery (SSRF) in SAP BusinessObjects Business Intelligence Platform</td>
-                        <td class="product">SAP BusinessObjects Business Intelligence Platform</td>
-                        <td><span class="priority medium">Medium</span></td>
-                        <td><span class="cvss medium">5.4</span></td>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3655227" target="_blank">3655227</a></td>
+                        <td class="title">Information Disclosure vulnerability in SAP Fiori App (Intercompany Balance Reconciliation)</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">4.3</td>
+                        <td class="cve">CVE-2026-0494</td>
                     </tr>
-
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3655229" target="_blank">3655229</a></td>
+                        <td class="title">Cross-Site Request Forgery (CSRF) vulnerability in SAP Fiori App (Intercompany Balance Reconciliation)</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">4.3</td>
+                        <td class="cve">CVE-2026-0493</td>
+                    </tr>
+                    <tr class="patch-row medium">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3677111" target="_blank">3677111</a></td>
+                        <td class="title">Missing Authorization check in Business Server Pages Application (Product Designer Web UI)</td>
+                        <td class="severity"><span class="badge medium">🟡 Medium</span></td>
+                        <td class="cvss">4.3</td>
+                        <td class="cve">CVE-2026-0497</td>
+                    </tr>
+                    <tr class="patch-row low">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3657998" target="_blank">3657998</a></td>
+                        <td class="title">Insufficient Input Handling in JNDI Operations of SAP Identity Management</td>
+                        <td class="severity"><span class="badge low">🟢 Low</span></td>
+                        <td class="cvss">3.8</td>
+                        <td class="cve">CVE-2026-0504</td>
+                    </tr>
+                    <tr class="patch-row low">
+                        <td class="note-id"><a href="https://me.sap.com/notes/3593356" target="_blank">3593356</a></td>
+                        <td class="title">Obsolete Encryption Algorithm Used in NW AS Java UME User Mapping</td>
+                        <td class="severity"><span class="badge low">🟢 Low</span></td>
+                        <td class="cvss">3.0</td>
+                        <td class="cve">CVE-2026-0510</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        
-        <div class="footer">
-            <p>© 2025 <a href="https://syntaai.com">SyntaAI</a> - SAP Security Intelligence Platform</p>
-            <p>Data sourced from official SAP Security Patch Day releases</p>
-            <p>Generated: 2025-12-29T11:53:26.564759</p>
+
+        <div class="cta-section">
+            <h3>🛡️ Automate Your SAP Security Patching</h3>
+            <p>SyntaAI Syntasec provides AI-powered vulnerability scanning, patch management, and compliance reporting for SAP systems.</p>
+            <a href="https://demo.syntaai.com" class="cta-button">Try Free Demo →</a>
         </div>
+
+        <footer>
+            <p>Data sourced from <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news.html" target="_blank">SAP Security Patch Day</a></p>
+            <p>Powered by <a href="https://demo.syntaai.com" target="_blank">SyntaAI Security Platform</a></p>
+            <p class="updated">Last updated: January 15, 2026</p>
+        </footer>
     </div>
 </body>
 </html>
