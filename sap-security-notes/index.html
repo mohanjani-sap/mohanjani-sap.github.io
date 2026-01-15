@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAP Security Patch Day Archive | SyntaAI Security Intelligence</title>
-    <meta name="description" content="Download SAP Security Notes data for your security tools. Monthly SAP Patch Day archive with JSON downloads.">
+    <meta name="description" content="Download SAP Security Notes data for your security tools. Monthly SAP Patch Day archive with JSON downloads. AI-powered SAP vulnerability management.">
     <link rel="canonical" href="https://syntaai.com/sap-security-notes/">
     <style>
         * {
@@ -90,10 +90,14 @@
             border: 2px solid white;
         }
 
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 60px;
+            padding: 0 20px 40px;
         }
 
         .cards-grid {
@@ -214,6 +218,77 @@
             background: #e5e7eb;
         }
 
+        /* About Section */
+        .about-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .about-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .about-contact {
+            text-align: right;
+        }
+
+        .about-contact h4 {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .about-contact a {
+            color: white;
+            font-size: 1.3rem;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .about-contact a:hover {
+            opacity: 0.8;
+        }
+
+        .about-contact .website-link {
+            display: block;
+            margin-top: 16px;
+            padding: 12px 24px;
+            background: white;
+            color: #4f46e5;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-contact .website-link:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(255,255,255,0.3);
+        }
+
         .footer {
             text-align: center;
             padding: 40px 20px;
@@ -226,7 +301,7 @@
             text-decoration: none;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8rem;
             }
@@ -238,6 +313,14 @@
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
+            }
+            .about-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .about-contact {
+                text-align: center;
             }
         }
     </style>
@@ -255,7 +338,7 @@
             <a href="latest.html" class="btn btn-secondary">
                 📄 View Latest
             </a>
-            <a href="https://demo.syntaai.com" class="btn btn-outline">
+            <a href="https://syntaai.com" class="btn btn-outline" target="_blank">
                 🚀 Get Syntasec
             </a>
         </div>
@@ -305,14 +388,30 @@
                 </div>
             </div>
 
-            <!-- Add more months here as they are released -->
-
         </div>
     </main>
 
+    <!-- About Syntasec Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h3>🛡️ Syntasec - AI-Powered SAP Security</h3>
+            <p>Comprehensive SAP vulnerability management with AI-driven remediation plans, automated Security Notes tracking, and real-time risk analysis – enterprise-grade protection at a fraction of the cost.</p>
+        </div>
+        <div class="about-contact">
+            <h4>Get in touch</h4>
+            <a href="mailto:contact@syntaai.com">
+                ✉️ contact@syntaai.com
+            </a>
+            <br>
+            <a href="https://syntaai.com" class="website-link" target="_blank">
+                🌐 Visit syntaai.com
+            </a>
+        </div>
+    </section>
+
     <footer class="footer">
         <p>Data sourced from <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news.html" target="_blank">SAP Security Patch Day</a></p>
-        <p style="margin-top: 8px;">Powered by <a href="https://demo.syntaai.com" target="_blank">SyntaAI Security Platform</a></p>
+        <p style="margin-top: 8px;">Powered by <a href="https://syntaai.com" target="_blank">SyntaAI Security Platform</a></p>
     </footer>
 </body>
 </html>
